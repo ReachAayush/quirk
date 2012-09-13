@@ -1,4 +1,4 @@
 quirk
 =====
 
-A project for some things that will be created this coming weekend
+A repo for some things that will be created this coming weekend
