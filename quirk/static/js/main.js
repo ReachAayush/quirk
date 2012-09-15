@@ -9,8 +9,8 @@ $(document).ready(function() {
   		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: images });
 	});
 
-	$("#main").delegate("img","click",function() { 
-		alert($(this).attr('id'));
+	$("#main").delegate(".screenContainer","click",function() { 
+		imageClicked = parseInt($(this).attr('id').replace('screenWrap', ''));
 	});
 
 	function newImage(url) {
@@ -19,16 +19,15 @@ $(document).ready(function() {
 
 	    // center column
 	    if (((images.length - 1) % 3) == 1) {
-	    	$('#main').append('<div class="screenContainer centerColumn"><img id="screen' + images.length + '" src="' + url + '"></div>');
+	    	$('#main').append('<div id="screenWrap' + images.length + '"class="screenContainer centerColumn"><img id="screen' + images.length + '" src="' + url + '"></div>');
 	    } else {
-	    	$('#main').append('<div class="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
+	    	$('#main').append('<div cid="screenWrap' + images.length + '"lass="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
 	    }
 
 
 	    $('#screen' + images.length).Jcrop({
 		    onChange: showCoords,
 		    onSelect: showCoords,
-		    onRelease: clearCoords
 		});
 
 	    // center column
@@ -69,18 +68,10 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	console.log('coords accepted');
-	/*
-	  $('#x1').val(c.x);
-	  $('#y1').val(c.y);
-	  $('#x2').val(c.x2);
-	  $('#y2').val(c.y2);
-	  $('#w').val(c.w);
-	  $('#h').val(c.h);
-	*/
-};
-
-function clearCoords() {
-	console.log('clear coords');
-  	//$('#coords input').val('');
+	 console.log(c.x);
+	 console.log(c.y);
+	 console.log(c.x2);
+	 console.log(c.y2);
+	 console.log(c.w);
+	 console.log(c.h);
 };
