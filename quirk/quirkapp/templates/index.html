@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+      	<meta name="apple-mobile-web-app-capable" content="yes" />
+      	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<title>Rukkus.fm</title>
+		<meta name="description" content="Start a Rukkus and let your party guests add and upvote songs with their mobile devices. Rukkus.fm is your Spotify powered social soundtrack.">
+
+		<!--[if lte IE 8]>
+			<style type="text/css">
+				#mobile {
+      				display: none;
+    			}
+    		</style>
+		<![endif]-->
+
+		<!--[if IE]>
+			<link rel="stylesheet" media='screen and (min-width: 1025px)' href="../static/css/bootstrap.css">
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+      		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   		<![endif]-->
+
+		<script type="text/javascript">
+			var isMobile = {
+			    Android: function() {
+			        return navigator.userAgent.match(/Android/i) ? true : false;
+			    },
+			    BlackBerry: function() {
+			        return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+			    },
+			    iOS: function() {
+			        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+			    },
+			    Windows: function() {
+			        return navigator.userAgent.match(/IEMobile/i) ? true : false;
+			    },
+			    any: function() {
+			        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+			    }
+			};
+
+			if (isMobile.iOS() || isMobile.Android() || isMobile.Windows()) {
+				document.write('<link rel="stylesheet" type="text/css" href="../../../static/css/style.css">');
+			} else {
+				document.write('<link rel="stylesheet" type="text/css" href="../../../static/css/bootstrap.css">');
+			}
+		</script>
+
+      	<script type="text/javascript">
+        	var _gaq = _gaq || [];
+         	_gaq.push(['_setAccount', 'UA-31315748-1']);
+         	_gaq.push(['_trackPageview']);
+
+         	(function() {
+            	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         	})();
+      	</script>
+	</head>
+	<body>
+		<div id="desktop">
+		  <div class="colorStrip"></div>
+
+		  <div class="navbar navbar-fixed-top">
+		    <div class="navbar-inner">
+		      <div class="container logo">
+		        <a class="brand" href="#"><img src="../../../static/img/logo.png"></a>
+		      </div>
+		    </div>
+		  </div>
+
+		  <div class="container">
+
+		    <div class="hero-unit">
+		      <img src="../../../static/img/hero.png">
+		      <div class="headline_text">
+		        <h2>No more lame playlists.</h2>
+		        <p>Hosting a party can leave you managing the music. No more. Let your guests add and upvote their favorite songs from their mobile phones. No app to download or subscription required.</p>
+		        <a href="http://eepurl.com/kTPZH" class="btn btn-large"><i class="icon-bullhorn"></i>&nbsp;&nbsp;Join our mailing list</a>
+		       <!--<a href="http://open.spotify.com/app/rukkus" class="btn btn-large">Install Rukkus.fm in Spotify</a>-->
+		       <!--<img src="../../../static/img/spotifylogo.png" style="margin-top: 20px" alt="Built on Spotify" />-->
+		      </div>
+		    </div>
+
+		    <div class="row steps">
+		      <div class="span4">
+		        <h2>1. Create a Rukkus</h2>
+		        <p>Install Rukkus.fm from the Spotify App Finder and start a new Rukkus. Drag in a playlist to get some music started.</p>
+		      </div>
+		      <div class="span4">
+		        <h2>2. Join the Rukkus</h2>
+		        <p>Direct your guests to www.rukkus.fm on their mobile phones. We'll use geolocation to show them a list of nearby parties.</p>
+		     </div>
+		      <div class="span4">
+		        <h2>3. Add and upvote</h2>
+		        <p>Add and upvote your favorite songs. Watch as the playlist shuffles as songs compete to be played.</p>
+		      </div>
+		    </div>
+
+		    <img src="../../../static/img/divider-top.png" style="margin-top:50px; margin-bottom: 20px;" />
+
+		    <div class="toggleWrap">
+			    <div class="btn-group toggle">
+			      <button id="aboutBtn" class="btn active">About Rukkus</button>
+			      <button id="compareBtn" class="btn">Compare Rukkus</button>
+			    </div>
+			</div>
+
+			<div id="about" class="row">
+				<div class="span4 photo">
+					<img src="../../../static/img/team.png" style="" />
+				</div>
+				<div class="span7 bio">
+			        <p>Rukkus.fm was developed by four students at Carnegie Mellon University as part of the TartanHacks hackathon in February of 2012. Winning Twitter's Best User Experience award, Rukkus.fm provides a no-nonsense, incredibly easy set up process, and gorgeous interface.</p>
+			        <p>Letting everyone collaborate on the playlist takes the stress out of hosting a party. Powered by Spotify, party guests can pick from over 14 million songs and vote to control the playlist.</p>
+			        <p>Relax and get ready to Rukkus.</p>
+				</div>
+			</div>
+
+	    	<div id="comparison" class="span10 hidden">
+		      <table class="table table-bordered">
+		        <thead>
+		          <tr>
+		          	<th></th>
+		            <th>Rukkus.fm</th>
+		            <th>iTunes DJ</th>
+		            <th>Google Nexus Q</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		          	<td>Price</td>
+		            <td>Free</td>
+		            <td>Free</td>
+		            <td>$299</td>
+		          </tr>
+		          <tr>
+		          	<td>Available on iPhone</td>
+		            <td><i class="icon-ok-sign"></i>*</td>
+		            <td><i class="icon-ok-sign"></i></td>
+		            <td></td>
+		          </tr>
+		          <tr>
+		          	<td>Available on Android</td>
+		            <td><i class="icon-ok-sign"></i>*</td>
+		            <td></td>
+		            <td><i class="icon-ok-sign"></i></td>
+		          </tr>
+		          <tr>
+		          	<td>No Setup Required</td>
+		            <td><i class="icon-ok-sign"></i></td>
+		            <td>Same WiFi network</td>
+		            <td>Same WiFi network</td>
+		          </tr>
+		          <tr>
+		          	<td>Music Collection</td>
+		            <td>Spotify (14 million tracks)</td>
+		            <td>Host's iTunes Library</td>
+		            <td>Your Google Play library</td>
+		          </tr>
+		          <tr>
+		          	<td>Upvote Songs</td>
+		            <td><i class="icon-ok-sign"></i></td>
+		            <td><i class="icon-ok-sign"></i></td>
+		            <td><i class="icon-ok-sign"></i></td>
+		          </tr>
+		          <tr>
+		          	<td>Request Songs</td>
+		            <td><i class="icon-ok-sign"></i></td>
+		            <td>Limited</td>
+		            <td>Limited</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      <p class="footnote">*available via www.rukkus.fm</p>
+			</div>
+
+			<img src="../../../static/img/divider-bot.png" style="margin-top:40px" />
+
+		    <footer>
+		      <p> <a href="mailto:team@rukkus.fm">Email us</a> or <a href="http://www.twitter.com/rukkusfm">Tweet Us</a></p><p>&copy; Rukkus.fm 2012</p>
+		    </footer>
+
+		  </div>
+		</div>
+		<div id="mobile">
+			<div id="header">
+      			<img src="../static/img/logo.png" width="98" height="30" alt="Rukkus.FM" />
+      		</div>
+			<div id="welcomeContainer">
+         		<div class="welcomeText">
+            		<div id="welcomeText_main" class="track">Hey there.</div>
+            		<div id="welcomeText_secondary" class="artist">Locating you...</div>
+         		</div>
+      		</div>
+      
+      		<div id="locationIcon"><img src="../static/img/loading.gif" alt="Loading" /></div>      
+      		<div id="nearbyList"></div>
+		</div>
+	</body>
+	<script type="application/javascript">var partyID = "{{ partyID }}"</script>
+   	<script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+   	<script type="application/javascript" src="../static/js/script.js"></script>
+   	<script type="application/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCSLI0yH7yoa7J_8hctorR_CPrfFdGXAQ8&sensor=true"></script>
+   	<script type="application/javascript">
+   		$(document).ready(function() {
+   			if ($('#desktop').css('display') == 'none') {
+  				getLocation();
+  			}
+  			$('#aboutBtn').click(function() {
+  				$('#aboutBtn').addClass('active');
+  				$('#compareBtn').removeClass('active');
+  				$('#about').removeClass('hidden');
+  				$('#comparison').addClass('hidden');
+  			});
+  			$('#compareBtn').click(function() {
+  				$('#compareBtn').addClass('active');
+  				$('#aboutBtn').removeClass('active');
+  				$('#comparison').removeClass('hidden');
+  				$('#about').addClass('hidden');
+  			});
+		});
+   	</script>
+</html>

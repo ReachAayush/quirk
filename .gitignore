@@ -2,3 +2,13 @@
 *.pot
 *.pyc
 local_settings.py
+
+static/js/.DS_Store
+
+static/css/.DS_Store
+
+static/img/.DS_Store
+
+static/.DS_Store
+
+quirk/quirkapp/.DS_Store
