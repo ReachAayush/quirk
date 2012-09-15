@@ -27,7 +27,7 @@ $(document).ready(function() {
 	  		}
   		}
   		
-  		$.post("http://quirk-quirk.dotcloud.com/api/newtask", { taskDescription: task, screens: screensString });
+  		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString });
 	});
 
 	$("#main").delegate(".screenContainer","click",function() { 
