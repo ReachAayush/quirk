@@ -3,6 +3,15 @@ object.addEventListener ("mouseup", xy);// add mouse down listener to object
 
 bounds = {};
 
+data = {};
+data.screen1 = [];
+
+// builds and submits JSON
+function uploadData() {
+	var jsonData = JSON.stringify(data);
+	//send jsonData to server...
+	return false;
+}
 
 // test mouse handler by showing x and y coordinates
 function xy(evt) {
@@ -13,15 +22,22 @@ function xy(evt) {
 	
 	var coordsX = parseInt(coords.x);
 	var coordsY = parseInt(coords.y);
+	var hit = 0;
 	
 	if((coords.x > bounds['x1']) && (coords.x < bounds['x2']) && 
 			(coords.y > bounds['y1']) && (coords.y < bounds['y2'])) {
-		alert("HIT!");
-		$('#hit').val(1);
-	} else{
-		alert("MISS");
-		$('#hit').val(0);
+		// if last screen, build and send json object
+		uploadData();
+		
+		hit = 1;
 	}
+	
+	$('#hit').val(hit);
+	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())}
+	data.screen1.push(click);
+	console.log(data);
+	
+	return false;
 }
 
 function relMouseCoords(event){
@@ -47,7 +63,14 @@ function relMouseCoords(event){
 }
 
 
-
+function compileBioData() {
+	data.demographics = {};
+	data.demographics.age = $('input:radio[name=age]:checked').value;
+	data.demographics.gender = $('input:radio[name=gender]:checked');
+	//console.log(data);
+	
+	return false;
+}
 
 
 

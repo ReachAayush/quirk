@@ -7,7 +7,27 @@ var clickElem = new Object();
 $(document).ready(function() {
 	$("#submit").click(function() {
   		var task = $('#taskDescription').val();
-  		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: screens.toStrin() });
+  		var screensString = '';
+
+  		for (i=0; i<screens.length; i++) {
+  			if ((i+1) == screens.length) {
+  				screensString += screens[i].url;
+  				screenString += 'btnLabel';
+	  			screensString += screens[i].x1;
+	  			screensString += screens[i].y1;
+	  			screensString += screens[i].x2;
+	  			screensString += screens[i].y2;
+  			} else {
+	  			screensString += screens[i].url + ',';
+	  			screenString += 'btnLabel,';
+	  			screensString += screens[i].x1 + ',';
+	  			screensString += screens[i].y1 + ',';
+	  			screensString += screens[i].x2 + ',';
+	  			screensString += screens[i].y2 + ',';
+	  		}
+  		}
+  		
+  		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString });
 	});
 
 	$("#main").delegate(".screenContainer","click",function() { 
