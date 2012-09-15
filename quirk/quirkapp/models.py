@@ -30,7 +30,6 @@ class Screen(models.Model):
 class Response(models.Model):
 	#demographics
 	#age group
-	18- 18-24 25-40 40-60 61+
 	AGEGROUP1 = 1  #under 18
 	AGEGROUP2 = 2  #18-24
 	AGEGROUP3 = 3  #25-40
