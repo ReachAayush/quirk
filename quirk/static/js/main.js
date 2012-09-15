@@ -19,10 +19,10 @@ $(document).ready(function() {
 	    	$('#main').append('<div id="screen' + images.length + '" class="screenContainer"><img src="' + url + '"></div>');
 	    }
 
-	    object = document.getElementById('screen' + images.length);// get image object
-		object.addEventListener ("mousedown", xy);// add mouse down listener to object
+	    image = $('#screen' + images.length); // get image object
+		image.addEventListener("mousedown", xy);// add mouse down listener to object
 
-	    $('#screen' + images.length).Jcrop({
+	    image.Jcrop({
 		    onChange: showCoords,
 		    onSelect: showCoords,
 		    onRelease: clearCoords
