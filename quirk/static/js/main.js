@@ -9,8 +9,16 @@ $(document).ready(function() {
 	});
 
 	function newImage(url) {
+		images.push(url);
 	    $('#dragScreen').remove();
-	    $('#main').append('<div class="screenContainer"><img src="' + url + '"></div>');
+
+	    // center column
+	    if (((images.length - 1) % 3) == 1) {
+	    	$('#main').append('<div class="screenContainer centerColumn"><img src="' + url + '"></div>');
+	    } else {
+	    	$('#main').append('<div class="screenContainer"><img src="' + url + '"></div>');
+	    }
+
 	    $('#main').append('<div id="dragScreen" class="screenContainer"></div>');
 	    createDrop();
 	}
@@ -33,8 +41,7 @@ $(document).ready(function() {
 		        $("#dragScreen").text("Uploading ("+percentage+"%)");
 		    },
 		    done: function(data) {
-		    	console.log(data.url);
-		        newImage(data.url);
+		        newImage(data[0]['url']);
 		    }
 		});
 	}

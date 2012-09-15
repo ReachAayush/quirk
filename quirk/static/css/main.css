@@ -159,7 +159,7 @@ body {
     margin-bottom: 38px;
 }
 
-.screenContainer:nth-child(even) {
+.centerColumn {
     margin-left: 38px;
     margin-right: 38px;
 }
