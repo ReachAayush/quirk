@@ -27,7 +27,7 @@ $(document).ready(function() {
 	    $('#dragScreen').remove();
 
 	    // center column
-	    if (((screen.length - 1) % 3) == 1) {
+	    if (((screens.length - 1) % 3) == 1) {
 	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer centerColumn"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    } else {
 	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
@@ -77,11 +77,8 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	 console.log(imageClicked);
-	 /*
-	 console.log(c.x);
-	 console.log(c.y);
-	 console.log(c.x2);
-	 console.log(c.y2);
-	 */
+	 screens[imageClicked].x1 = c.x;
+	 screens[imageClicked].y1 = c.y;
+	 screens[imageClicked].x2 = c.x2;
+	 screens[imageClicked].y2 = c.y2;
 };
