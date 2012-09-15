@@ -60,7 +60,7 @@ def createScreens(screenInfoCSV,task):
 			x2 = float(item)
 		else:
 			y2=float(item) #y2 
-		new_screen=new_screen(URL,label,x1,y1,x2,y2,task)
+		new_screenWrap=new_screen(URL,label,x1,y1,x2,y2,task)
 		loc+=1
 
 #add a screenshot
