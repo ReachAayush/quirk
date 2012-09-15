@@ -20,7 +20,6 @@ $(document).ready(function() {
 	    }
 
 	    image = $('#screen' + images.length); // get image object
-		image.addEventListener("mousedown", xy);// add mouse down listener to object
 
 	    image.Jcrop({
 		    onChange: showCoords,
@@ -57,34 +56,6 @@ $(document).ready(function() {
 
 	createDrop();
 });
-
-// test mouse handler by showing x and y coordinates
-function xy(e) {
-	coords = relMouseCoords(e);
-	console.log('(' + coords.x + ', ' + coords.y + ')');
-}
-
-function relMouseCoords(e){
-	if (e.offsetX !== undefined && e.offsetY !== undefined) 
-		{ return {x:e.offsetX, y:e.offsetY}; }
-	
-    var totalOffsetX = 0;
-    var totalOffsetY = 0;
-    var canvasX = 0;
-    var canvasY = 0;
-    var currentElement = this;
-
-    do{
-        totalOffsetX += currentElement.offsetLeft;
-        totalOffsetY += currentElement.offsetTop;
-    }
-    while(currentElement = currentElement.offsetParent)
-
-    canvasX = e.pageX - totalOffsetX;
-    canvasY = e.pageY - totalOffsetY;
-
-    return {x:canvasX, y:canvasY}
-}
 
 function showCoords(c) {
 	console.log('coords accepted');
