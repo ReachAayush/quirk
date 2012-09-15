@@ -3,8 +3,17 @@ object.addEventListener ("mouseup", xy);// add mouse down listener to object
 
 bounds = {};
 
+startTime = 0;
+
 data = {};
 data.screen1 = [];
+// start time for time recording.
+window.onload = setStartTime();
+
+
+function setStartTime() {
+	startTime = (new Date()).getTime();
+}
 
 // builds and submits JSON
 function uploadData() {
@@ -33,7 +42,7 @@ function xy(evt) {
 	}
 	
 	$('#hit').val(hit);
-	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())}
+	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())-startTime}
 	data.screen1.push(click);
 	console.log(data);
 	
@@ -65,14 +74,12 @@ function relMouseCoords(event){
 
 function compileBioData() {
 	data.demographics = {};
-	data.demographics.age = $('input:radio[name=age]:checked').value;
-	data.demographics.gender = $('input:radio[name=gender]:checked');
+	data.demographics.age = 'info';// I don't even
+	data.demographics.gender = 'info';
 	//console.log(data);
 	
 	return false;
 }
-
-
 
 
 jQuery(function($){
