@@ -6,7 +6,7 @@ class Task(models.Model):
 	#task name
 	name = models.CharField(max_length=200)
 	#description
-	description = models.CharField()
+	description = models.CharField(max_length=500)
 	#taskID
 	taskID = models.CharField(max_length=10, unique=True)
 	
@@ -51,7 +51,7 @@ class Response(models.Model):
 	MALE = 'M'
 	FEMALE = 'F'
 	OTHER = 'O'
-	
+
 	GENDER_CHOICES = (
 		(MALE, 'Male'),
 		(FEMALE, 'Female'),
