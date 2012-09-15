@@ -1,8 +1,6 @@
 filepicker.setKey('ASiWD1oxDScaS4gVqOIi-z');
 
 var screens = new Array();
-var imageClicked = 0;
-var clickElem = new Object();
 
 $(document).ready(function() {
 	$("#submit").click(function() {
@@ -93,6 +91,7 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
+	imageClicked = c.replace('screenWrap', '');
 	screens[imageClicked-1].x1 = c.x;
 	screens[imageClicked-1].y1 = c.y;
 	screens[imageClicked-1].x2 = c.x2;

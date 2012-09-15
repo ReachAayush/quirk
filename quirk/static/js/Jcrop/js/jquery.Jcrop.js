@@ -32,7 +32,6 @@
 (function ($) {
 
   $.Jcrop = function (obj, opt) {
-    console.log(obj);
     var options = $.extend({}, $.Jcrop.defaults),
         docOffset, lastcurs, ie6mode = false;
 
@@ -726,6 +725,7 @@
           y2: a[3],
           w: a[2] - a[0],
           h: a[3] - a[1],
+          id: $(obj).attr('id'),
         };
       }
       //}}}
