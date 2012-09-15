@@ -9,7 +9,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Kevin Schaefer', 'kevinjschaefer@gmail.com'),
+    ('Kevin', 'kevinjschaefer@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -130,11 +130,16 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'project-log-file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/dotcloud/current/quirkErrors.log'
         }
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins', 'project-log-file'],
             'level': 'ERROR',
             'propagate': True,
         },

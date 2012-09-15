@@ -27,16 +27,17 @@ def newTaskID():
 	return randomString
 
 #create a Task
+@csrf_exempt
 def new_task(request):
 	if request.method == 'POST':
 		new_task = Task()
 		new_task.description = str(request.POST['taskDescription'])
 		new_task.privateID = newTaskID()
 		new_task.publicID = newTaskID()
-		screensCSV = str(request.POST['taskDescription'])
-		createScreens(screensCSV,new_task)
+		screensCSV = str(request.POST['screens'])
 		new_task.save()
-		response = ({'privateID': new_task.privateID, 'publicID': new_task.publicTaskID  })
+		createScreens(screensCSV, new_task)
+		response = ({'privateID': new_task.privateID, 'publicID': new_task.publicID  })
 		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 	else:
 		return HttpResponse('Error')
@@ -46,15 +47,23 @@ def createScreens(screenInfoCSV,task):
 	# URL, label, x1, y1, x2, y2
 	loc=0
 	screensList = screenInfoCSV.split(",")
-	for item in screensList
-		if loc%5==0: URL = item
-		else if x%5==1: label = item
-		else if x%5==2: x1 = float(item)
-		else if x%5==3: y1 = float(item)
-		else if x%5==4: x2 = float(item)
-		else: y2=float(item) #y2 
-		new_screen=new_screen(URL,label,x1,y1,x2,y2,task)
+	for item in screensList:
+		if loc%6==0:
+			URL = item
+		elif loc%6==1:
+			label = item
+		elif loc%6==2:
+			x1 = float(item)
+		elif loc%6==3:
+			y1 = float(item)
+		elif loc%6==4:
+			x2 = float(item)
+		else:
+			y2=float(item)
 		loc+=1
+
+		if ((loc>0) and (loc%6 == 5)):
+			new_screen(URL,label,x1,y1,x2,y2,task)
 
 #add a screenshot
 def new_screen(URL,label,x1,y1,x2,y2,privateID):
@@ -64,7 +73,7 @@ def new_screen(URL,label,x1,y1,x2,y2,privateID):
 		new_screen.nextButtonY1 = y1
 		new_screen.nextButtonX2 = x2
 		new_screen.nextButtonY2 = y2
-		new_screen.nextButtonLabel = label	
+		new_screen.nextButtonLabel = label
 		new_screen.imageURL = URL
 		
 		new_screen.task = get_object_or_404(Task, privateID=privateID)
@@ -83,17 +92,17 @@ def get_task_private(request, privateID):
 	task = Task.objects.get(privateID=privateID)
 	return task
 
-#create a new responce
-def new_responce(request):
+#create a new response
+def new_response(request):
 	if request.method == 'POST':
-		new_responce = Response()
-		new_responce.gender = str(request.POST['gender'])
-		new_responce.age_group = str(request.POST['age'])
-		new_responce.jsonResponceData = str(request.POST['data'])
+		new_response = Response()
+		new_response.gender = str(request.POST['gender'])
+		new_response.age_group = str(request.POST['age'])
+		new_response.jsonresponseData = str(request.POST['data'])
 		
 		publicID = str(request.POST['publicID'])
-		new_responce.task = get_object_or_404(Task, publicID=publicID)
-		new_responce.save()
+		new_response.task = get_object_or_404(Task, publicID=publicID)
+		new_response.save()
 		return HttpResponse('Success')
 	else:
 		return HttpResponse('Error')
