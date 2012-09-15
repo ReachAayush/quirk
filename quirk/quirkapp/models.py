@@ -7,7 +7,6 @@ class Task(models.Model):
 	taskName = models.CharField(max_length=200)
 	
 	#description
-<<<<<<< HEAD
 	description = models.CharField()
 	
 	#private ID for the developer
@@ -15,11 +14,7 @@ class Task(models.Model):
 	
 	#public ID for users
 	publicID = models.CharField(max_length=10, unique=True)
-=======
 	description = models.CharField(max_length=500)
-	#taskID
-	taskID = models.CharField(max_length=10, unique=True)
->>>>>>> 3216e4ce1c3f2e70a3f91c524850dae9391a70e4
 	
 #model for each screen in the Task
 class Screen(models.Model):
