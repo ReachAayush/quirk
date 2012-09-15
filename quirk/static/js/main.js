@@ -9,10 +9,6 @@ $(document).ready(function() {
   		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: screen });
 	});
 
-	$("#main").delegate(".screenContainer","click",function() { 
-		imageClicked = parseInt($(this).attr('id').replace('screenWrap', ''));
-	});
-
 	function newImage(url) {
 		screen = new Object();
 		screen.url = url;
@@ -27,7 +23,6 @@ $(document).ready(function() {
 	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    }
 
-
 	    $('#screen' + screens.length).Jcrop({
 		    onChange: showCoords,
 		    onSelect: showCoords,
@@ -41,6 +36,10 @@ $(document).ready(function() {
 	    	$('#main').append('<div id="dragScreen" class="screenContainer"></div>');
 	    	createDrop();
 	    }
+
+	    $("#main").delegate(".screenContainer","click",function() { 
+			imageClicked = parseInt($(this).attr('id').replace('screenWrap', ''));
+		});
 
 	}
 
