@@ -33,8 +33,8 @@ $(document).ready(function() {
 		        $("#dragScreen").text("Uploading ("+percentage+"%)");
 		    },
 		    done: function(data) {
-		    	console.log(data);
-		        //newImage(data['url']);
+		    	console.log(data['url']);
+		        newImage(data['url']);
 		    }
 		});
 	}
