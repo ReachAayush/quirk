@@ -4,11 +4,16 @@ from django import forms
 #model for the developer's task
 class Task(models.Model):
 	#task name
-	name = models.CharField(max_length=200)
+	taskName = models.CharField(max_length=200)
+	
 	#description
 	description = models.CharField()
-	#taskID
-	taskID = models.CharField(max_length=10, unique=True)
+	
+	#private ID for the developer
+	privateID = models.CharField(max_length=10, unique=True)
+	
+	#public ID for users
+	publicID = models.CharField(max_length=10, unique=True)
 	
 #model for each screen in the Task
 class Screen(models.Model):

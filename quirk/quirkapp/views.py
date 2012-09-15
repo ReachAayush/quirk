@@ -23,7 +23,7 @@ def mobileView(request, party_id):
 
 # Bulk add song (via post)
 @csrf_exempt
-def new_task(request):
+def example(request):
 	if request.method == 'POST':
 		party_id = str(request.POST['partyID'])
 		nameList = str(request.POST['nameList']).split('*@_*')
@@ -45,3 +45,34 @@ def new_task(request):
 					new_song.save()
 
 	return HttpResponse('Success')
+
+# Generate random
+def newTaskID():
+	randomString = ''.join(random.sample('abcdefghkmnopqrstuvwxyz23456789', 6))
+	return randomString
+
+#create a Task
+def new_task(request):
+	if request.method == 'POST':
+		new_task = Task()
+		new_task.taskName = str(request.POST['name'])
+		new_task.description = str(request.POST['description'])
+		new_task.privateID = newTaskID()
+		new_task.publicID = newTaskID()
+		new_task.save()
+		response = ({ 'taskName': new_task.taskName , 'privateID': new_task.privateID, 'publicID': new_task.publicTaskID  })
+			return HttpResponse(simplejson.dumps(response),mimetype='application/json')
+	else:
+		return HttpResponse('Error')
+
+#retrieve a task
+
+#create a new responce
+
+#log data from a responce
+
+#add a screenshot
+
+#add next button on a screen shot
+
+
