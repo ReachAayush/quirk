@@ -1,38 +1,46 @@
 filepicker.setKey('ASiWD1oxDScaS4gVqOIi-z');
 
-var images = new Array();
+var screens = new Array();
 var imageClicked = 0;
+var clickElem = new Object();
 
 $(document).ready(function() {
 	$("#submit").click(function() {
   		var task = $('#taskDescription').val();
-  		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: images });
+  		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: screens.toStrin() });
 	});
 
+	$("#main").delegate(".screenContainer","click",function() { 
+		imageClicked = parseInt($(this).attr('id').replace('screenWrap', ''));
+		showCoords(clickElem);
+	});
+
+	function tempCoords(c) {
+		clickElem = c;
+	}
+
 	function newImage(url) {
-		images.push(url);
+		screen = new Object();
+		screen.url = url;
+
+		screens.push(screen);
 	    $('#dragScreen').remove();
 
 	    // center column
-	    if (((images.length - 1) % 3) == 1) {
-	    	$('#main').append('<div class="screenContainer centerColumn"><img id="screen' + images.length + '" src="' + url + '"></div>');
+	    if (((screens.length - 1) % 3) == 1) {
+	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer centerColumn"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    } else {
-	    	$('#main').append('<div class="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
+	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    }
 
-	    $('#screen' + images.length).click(function() {
-		    imageClicked = images.length;
-		    alert(imageClicked);
-		});
 
-	    $('#screen' + images.length).Jcrop({
-		    onChange: showCoords,
-		    onSelect: showCoords,
-		    onRelease: clearCoords
+	    $('#screen' + screens.length).Jcrop({
+		    onChange: tempCoords,
+		    onSelect: tempCoords,
 		});
 
 	    // center column
-	    if ((images.length % 3) == 1) {
+	    if ((screens.length % 3) == 1) {
 	    	$('#main').append('<div id="dragScreen" class="screenContainer centerColumn"></div>');
 	    	createDrop();
 	    } else {
@@ -69,18 +77,8 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	console.log('coords accepted');
-	/*
-	  $('#x1').val(c.x);
-	  $('#y1').val(c.y);
-	  $('#x2').val(c.x2);
-	  $('#y2').val(c.y2);
-	  $('#w').val(c.w);
-	  $('#h').val(c.h);
-	*/
-};
-
-function clearCoords() {
-	console.log('clear coords');
-  	//$('#coords input').val('');
+	screens[imageClicked-1].x1 = c.x;
+	screens[imageClicked-1].y1 = c.y;
+	screens[imageClicked-1].x2 = c.x2;
+	screens[imageClicked-1].y2 = c.y2;
 };
