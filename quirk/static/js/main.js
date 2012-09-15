@@ -19,7 +19,12 @@ $(document).ready(function() {
 	    	$('#main').append('<div class="screenContainer"><img src="' + url + '"></div>');
 	    }
 
-	    $('#main').append('<div id="dragScreen" class="screenContainer"></div>');
+	    if (((images.length) % 3) == 1) {
+	    	$('#main').append('<div id="dragScreen centerColumn" class="screenContainer"></div>');
+	    } else {
+	    	$('#main').append('<div id="dragScreen" class="screenContainer"></div>');
+	    }
+
 	    createDrop();
 	}
 
