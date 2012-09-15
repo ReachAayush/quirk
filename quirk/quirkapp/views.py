@@ -61,7 +61,7 @@ def new_task(request):
 		new_task.publicID = newTaskID()
 		new_task.save()
 		response = ({ 'taskName': new_task.taskName , 'privateID': new_task.privateID, 'publicID': new_task.publicTaskID  })
-			return HttpResponse(simplejson.dumps(response),mimetype='application/json')
+		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 	else:
 		return HttpResponse('Error')
 
