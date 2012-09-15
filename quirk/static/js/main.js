@@ -1,6 +1,8 @@
 filepicker.setKey('ASiWD1oxDScaS4gVqOIi-z');
 
 var screens = new Array();
+var imageClicked = 0;
+var clickElem = new Object();
 
 $(document).ready(function() {
 	$("#submit").click(function() {
@@ -28,11 +30,14 @@ $(document).ready(function() {
   		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString });
 	});
 
-	/*
-	$("#main").delegate(".screenContainer","mousedown",function() { 
+	$("#main").delegate(".screenContainer","click",function() { 
 		imageClicked = parseInt($(this).attr('id').replace('screenWrap', ''));
+		showCoords(clickElem);
 	});
-	*/
+
+	function tempCoords(c) {
+		clickElem = c;
+	}
 
 	function newImage(url) {
 		screen = new Object();
@@ -48,9 +53,10 @@ $(document).ready(function() {
 	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    }
 
+
 	    $('#screen' + screens.length).Jcrop({
-		    onChange: showCoords,
-		    onSelect: showCoords,
+		    onChange: tempCoords,
+		    onSelect: tempCoords,
 		});
 
 	    // center column
@@ -91,8 +97,6 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	imageClicked = c.w.replace('screenWrap', '');
-	alert(imageClicked);
 	screens[imageClicked-1].x1 = c.x;
 	screens[imageClicked-1].y1 = c.y;
 	screens[imageClicked-1].x2 = c.x2;

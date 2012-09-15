@@ -210,8 +210,7 @@ var name = "";
         x2: c.x2 * xscale,
         y2: c.y2 * yscale,
         w: c.w * xscale,
-        h: c.h * yscale,
-        id: $(obj).attr('id')
+        h: c.h * yscale
       };
     }
     //}}}
@@ -729,7 +728,11 @@ var name = "";
           y: a[1],
           x2: a[2],
           y2: a[3],
+<<<<<<< HEAD
           w: num,
+=======
+          w: a[2] - a[0],
+>>>>>>> parent of ceb7ff0... Merge branch 'master' of github.com:jackm321/quirk
           h: a[3] - a[1]
         };
       }
