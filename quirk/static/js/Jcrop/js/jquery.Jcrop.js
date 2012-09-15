@@ -732,6 +732,9 @@ var name = "";
           w: num,
 =======
           w: a[2] - a[0],
+<<<<<<< HEAD
+>>>>>>> parent of ceb7ff0... Merge branch 'master' of github.com:jackm321/quirk
+=======
 >>>>>>> parent of ceb7ff0... Merge branch 'master' of github.com:jackm321/quirk
           h: a[3] - a[1]
         };
