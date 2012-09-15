@@ -5,11 +5,11 @@ PROJECT_ROOT = os.path.dirname(__file__)
 with open('/home/dotcloud/environment.json') as f:
   env = json.load(f)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Kevin Schaefer', 'kevinjschaefer@gmail.com'),
+    ('Kevin', 'kevinjschaefer@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -130,11 +130,17 @@ LOGGING = {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'project-log-file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': 'quirkErrors.log'
         }
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins', 'project-log-file'],
             'level': 'ERROR',
             'propagate': True,
         },

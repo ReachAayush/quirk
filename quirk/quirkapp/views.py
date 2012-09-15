@@ -30,13 +30,13 @@ def newTaskID():
 @csrf_exempt
 def new_task(request):
 	if request.method == 'POST':
-		new_task = Task()
-		new_task.description = str(request.POST['taskDescription'])
-		new_task.privateID = newTaskID()
-		new_task.publicID = newTaskID()
+		#new_task = Task()
+		#new_task.description = str(request.POST['taskDescription'])
+		#new_task.privateID = newTaskID()
+		#new_task.publicID = newTaskID()
 		#screensCSV = str(request.POST['screens'])
 		#createScreens(screensCSV,new_task)
-		new_task.save()
+		#new_task.save()
 		#response = ({'privateID': new_task.privateID, 'publicID': new_task.publicTaskID  })
 		response = ({'test': 'hi'})
 		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
