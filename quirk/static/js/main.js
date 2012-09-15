@@ -25,8 +25,15 @@ $(document).ready(function() {
 		    onRelease: clearCoords
 		});
 
-	    $('#main').append('<div id="dragScreen" class="screenContainer"></div>');
-	    createDrop();
+	    // center column
+	    if ((images.length % 3) == 1) {
+	    	$('#main').append('<div id="dragScreen" class="screenContainer centerColumn"></div>');
+	    	createDrop();
+	    } else {
+	    	$('#main').append('<div id="dragScreen" class="screenContainer"></div>');
+	    	createDrop();
+	    }
+
 	}
 
 	function createDrop() {
