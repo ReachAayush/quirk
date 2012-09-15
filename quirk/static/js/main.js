@@ -1,12 +1,12 @@
 filepicker.setKey('ASiWD1oxDScaS4gVqOIi-z');
 
-var images = new Array();
+var screens = new Array();
 var imageClicked = 0;
 
 $(document).ready(function() {
 	$("#submit").click(function() {
   		var task = $('#taskDescription').val();
-  		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: images });
+  		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: screen });
 	});
 
 	$("#main").delegate(".screenContainer","click",function() { 
@@ -14,24 +14,27 @@ $(document).ready(function() {
 	});
 
 	function newImage(url) {
-		images.push(url);
+		screen = new Object();
+		screen.url = url;
+
+		screens.push(screen);
 	    $('#dragScreen').remove();
 
 	    // center column
-	    if (((images.length - 1) % 3) == 1) {
-	    	$('#main').append('<div id="screenWrap' + images.length + '"class="screenContainer centerColumn"><img id="screen' + images.length + '" src="' + url + '"></div>');
+	    if (((screen.length - 1) % 3) == 1) {
+	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer centerColumn"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    } else {
-	    	$('#main').append('<div cid="screenWrap' + images.length + '"lass="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
+	    	$('#main').append('<div cid="screenWrap' + screens.length + '"lass="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    }
 
 
-	    $('#screen' + images.length).Jcrop({
+	    $('#screen' + screens.length).Jcrop({
 		    onChange: showCoords,
 		    onSelect: showCoords,
 		});
 
 	    // center column
-	    if ((images.length % 3) == 1) {
+	    if ((screens.length % 3) == 1) {
 	    	$('#main').append('<div id="dragScreen" class="screenContainer centerColumn"></div>');
 	    	createDrop();
 	    } else {
@@ -68,10 +71,11 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
+	 console.log(imageClicked);
+	 /*
 	 console.log(c.x);
 	 console.log(c.y);
 	 console.log(c.x2);
 	 console.log(c.y2);
-	 console.log(c.w);
-	 console.log(c.h);
+	 */
 };
