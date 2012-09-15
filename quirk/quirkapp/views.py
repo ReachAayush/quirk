@@ -55,8 +55,8 @@ def newTaskID():
 def new_task(request):
 	if request.method == 'POST':
 		new_task = Task()
-		new_task.taskName = str(request.POST['name'])
-		new_task.description = str(request.POST['description'])
+		new_task.taskName = str(request.POST['taskName'])
+		new_task.description = str(request.POST['taskDescription'])
 		new_task.privateID = newTaskID()
 		new_task.publicID = newTaskID()
 		new_task.save()
