@@ -14,14 +14,12 @@ $(document).ready(function() {
 
 	    // center column
 	    if (((images.length - 1) % 3) == 1) {
-	    	$('#main').append('<div id="screen' + images.length + '" class="screenContainer centerColumn"><img src="' + url + '"></div>');
+	    	$('#main').append('<div class="screenContainer centerColumn"><img id="screen' + images.length + '" src="' + url + '"></div>');
 	    } else {
-	    	$('#main').append('<div id="screen' + images.length + '" class="screenContainer"><img src="' + url + '"></div>');
+	    	$('#main').append('<div class="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
 	    }
 
-	    image = $('#screen' + images.length); // get image object
-
-	    image.Jcrop({
+	    $('#screen' + images.length).Jcrop({
 		    onChange: showCoords,
 		    onSelect: showCoords,
 		    onRelease: clearCoords
