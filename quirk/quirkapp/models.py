@@ -43,7 +43,7 @@ class Response(models.Model):
 		(AGEGROUP1, 'group4'),
 		(AGEGROUP1, 'group5'),
 	)
-	age_group = models.IntegerField(choices=GENDER_CHOICES, default=OTHER)
+	age_group = models.IntegerField(choices=AGE_GROUPS, default=OTHER)
 
 
 	#gender
