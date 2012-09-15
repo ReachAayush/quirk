@@ -29,11 +29,15 @@
  * }}}
  */
 
+var name = "";
+
 (function ($) {
 
   $.Jcrop = function (obj, opt) {
     var options = $.extend({}, $.Jcrop.defaults),
         docOffset, lastcurs, ie6mode = false;
+
+    name = obj["id"];
 
     // Internal Methods {{{
     function px(n) {
@@ -719,14 +723,14 @@
       //}}}
       function makeObj(a) //{{{
       {
+        var num = parseInt(name.substring(6));
         return {
-          var elemid = parseInt($(obj).attr('id')replace('screenWrap', ''));
           x: a[0],
           y: a[1],
           x2: a[2],
           y2: a[3],
-          w: a[2] - a[0],
-          h: elemid,
+          w: num,
+          h: a[3] - a[1]
         };
       }
       //}}}
