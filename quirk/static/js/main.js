@@ -19,14 +19,8 @@ $(document).ready(function() {
 	    	$('#main').append('<div class="screenContainer"><img src="' + url + '"></div>');
 	    }
 
-	    if (((images.length) % 3) == 1) {
-	    	$('#main').append('<div id="dragScreen centerColumn" class="screenContainer"></div>');
-	    	createDrop();
-	    } else {
-	    	$('#main').append('<div id="dragScreen" class="screenContainer"></div>');
-	    	createDrop();
-	    }
-
+	    $('#main').append('<div id="dragScreen" class="screenContainer"></div>');
+	    createDrop();
 	}
 
 	function createDrop() {
