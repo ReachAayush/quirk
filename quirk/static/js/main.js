@@ -27,6 +27,7 @@ $(document).ready(function() {
 	  		}
   		}
   		
+  		console.log(screensString);
   		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString });
 	});
 
@@ -97,11 +98,10 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	console.log(elemClicked);
-	elemClicked = parseInt(elemClicked.replace('screen', ''));
-	
-	screens[imageClicked-1].x1 = c.x;
-	screens[imageClicked-1].y1 = c.y;
-	screens[imageClicked-1].x2 = c.x2;
-	screens[imageClicked-1].y2 = c.y2;
+	elemClicked = parseInt(elemClicked.replace('screen', '')) - 1;
+
+	screens[elemClicked].x1 = c.x;
+	screens[elemClicked].y1 = c.y;
+	screens[elemClicked].x2 = c.x2;
+	screens[elemClicked].y2 = c.y2;
 };
