@@ -109,10 +109,18 @@ def new_screen(request):
 		return HttpResponse('Error')
 
 #get screen's nextButton coordinates
-#def getNextButtonCoords(request,screen):
-
+def getNextButtonCoords(request,screen):
+	return (screen.X1, screen.Y1, screen.X2, screen.Y2)
 
 #get screen's nextButton label
+def getNextButtonLabel(request, screen):
+	return screen.nextButtonLabel
+
+
+#get screens from a task
+def getScreensFromPublicID(publicTaskID):
+	queue = Song.objects.filter(task__publicID=publicTaskID).order_by('screenID')
+
 
 
 #### analytics helpers ####
