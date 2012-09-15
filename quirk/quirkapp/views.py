@@ -36,7 +36,7 @@ def new_task(request):
 		new_task.publicID = newTaskID()
 		screensCSV = str(request.POST['screens'])
 		new_task.save()
-		createScreens(screensCSV, new_task)
+		#createScreens(screensCSV, new_task)
 		response = ({'privateID': new_task.privateID, 'publicID': new_task.publicID  })
 		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 	else:
