@@ -19,7 +19,10 @@ $(document).ready(function() {
 	    	$('#main').append('<div id="screen' + images.length + '" class="screenContainer"><img src="' + url + '"></div>');
 	    }
 
-	    $('#' + images.length).Jcrop({
+	    object = document.getElementById('#screen' + images.length);// get image object
+		object.addEventListener ("mousedown", xy);// add mouse down listener to object
+
+	    $('#screen' + images.length).Jcrop({
 		    onChange: showCoords,
 		    onSelect: showCoords,
 		    onRelease: clearCoords
@@ -54,9 +57,6 @@ $(document).ready(function() {
 
 	createDrop();
 });
-
-object = document.getElementById("image");// get image object
-object.addEventListener ("mousedown", xy);// add mouse down listener to object
 
 // test mouse handler by showing x and y coordinates
 function xy(e) {
