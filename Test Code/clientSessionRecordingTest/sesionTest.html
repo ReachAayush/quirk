@@ -8,8 +8,8 @@
 
 <form id="coords"
   class="coords"
-  onsubmit="return false;"
-  action="">
+  onsubmit="return compileBioData()"
+  action="javascript:compileBioData()">
 
   <div>
   	<input type="radio" name="age" value="group1"> &lt; 18<br>
@@ -22,6 +22,9 @@
 	<input type="radio" name="gender" value="female"> female<br>
 	<input type="radio" name="gender" value="other"> other<br>
 	<input type="radio" name="gender" value="other" checked>prefer not to answer
+	<br>
+	<input type="submit" value="Done" />
+	<br>
   </div>
 </form>
 
