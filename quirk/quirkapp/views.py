@@ -68,12 +68,12 @@ def new_task(request):
 #retrieve a task by its public id task
 def get_task_public(request, publicID):
 	task = Task.objects.get(publicID=publicID)
-		return task
+	return task
 
 #retrieve a task by its private id task
 def get_task_private(request, privateID):
 	task = Task.objects.get(privateID=privateID)
-		return task
+	return task
 
 #create a new responce
 def new_responce(request):
@@ -109,6 +109,8 @@ def new_screen(request):
 		return HttpResponse('Error')
 
 #get screen's nextButton coordinates
+def new_screen(request,task):
+
 
 #get screen's nextButton label
 
