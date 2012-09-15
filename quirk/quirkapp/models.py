@@ -43,18 +43,21 @@ class Response(models.Model):
 		(AGEGROUP1, 'group4'),
 		(AGEGROUP1, 'group5'),
 	)
-	age_group = models.IntegerField(choices=AGE_GROUPS, default=OTHER)
+
+	age_group = models.IntegerField(choices=AGE_GROUPS, default=0)
 
 
 	#gender
 	MALE = 'M'
 	FEMALE = 'F'
 	OTHER = 'O'
+	
 	GENDER_CHOICES = (
 		(MALE, 'Male'),
 		(FEMALE, 'Female'),
 		(OTHER, 'Other'),
 	)
+
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=OTHER)
 	
 	#json response from client
