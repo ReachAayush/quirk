@@ -7,7 +7,6 @@ from quirk.quirkapp.models import Task, Screen, Response
 from django.utils import simplejson
 from django.core import serializers
 from datetime import datetime
-import logging
 import urllib2
 import json
 import random
@@ -36,8 +35,8 @@ def new_task(request):
 		new_task.privateID = newTaskID()
 		new_task.publicID = newTaskID()
 		screensCSV = str(request.POST['screens'])
-		createScreens(screensCSV,new_task)
 		new_task.save()
+		createScreens(screensCSV, new_task)
 		response = ({'privateID': new_task.privateID, 'publicID': new_task.publicID  })
 		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 	else:
@@ -48,22 +47,23 @@ def createScreens(screenInfoCSV,task):
 	# URL, label, x1, y1, x2, y2
 	loc=0
 	screensList = screenInfoCSV.split(",")
-	logging.debug(screensList)
 	for item in screensList:
-		if loc%5==0:
+		if loc%6==0:
 			URL = item
-		elif x%5==1:
+		elif x%6==1:
 			label = item
-		elif x%5==2:
+		elif x%6==2:
 			x1 = float(item)
-		elif x%5==3:
+		elif x%6==3:
 			y1 = float(item)
-		elif x%5==4:
+		elif x%6==4:
 			x2 = float(item)
 		else:
 			y2=float(item)
-		new_screenWrap=new_screen(URL,label,x1,y1,x2,y2,task)
 		loc+=1
+
+		if ((loc>0) and (loc%6 == 5)):
+			new_screen(URL,label,x1,y1,x2,y2,task)
 
 #add a screenshot
 def new_screen(URL,label,x1,y1,x2,y2,privateID):
