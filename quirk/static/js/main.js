@@ -7,7 +7,7 @@ var clickElem = new Object();
 $(document).ready(function() {
 	$("#submit").click(function() {
   		var task = $('#taskDescription').val();
-  		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: screen });
+  		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: screens.toStrin() });
 	});
 
 	$("#main").delegate(".screenContainer","click",function() { 
@@ -77,8 +77,8 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	 screens[imageClicked].x1 = c.x;
-	 screens[imageClicked].y1 = c.y;
-	 screens[imageClicked].x2 = c.x2;
-	 screens[imageClicked].y2 = c.y2;
+	screens[imageClicked-1].x1 = c.x;
+	screens[imageClicked-1].y1 = c.y;
+	screens[imageClicked-1].x2 = c.x2;
+	screens[imageClicked-1].y2 = c.y2;
 };
