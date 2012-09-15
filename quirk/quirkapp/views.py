@@ -109,7 +109,7 @@ def new_screen(request):
 		return HttpResponse('Error')
 
 #get screen's nextButton coordinates
-def new_screen(request,task):
+#def getNextButtonCoords(request,screen):
 
 
 #get screen's nextButton label
