@@ -7,6 +7,7 @@ from quirk.quirkapp.models import Task, Screen, Response
 from django.utils import simplejson
 from django.core import serializers
 from datetime import datetime
+import logging
 import urllib2
 import json
 import random
@@ -47,6 +48,7 @@ def createScreens(screenInfoCSV,task):
 	# URL, label, x1, y1, x2, y2
 	loc=0
 	screensList = screenInfoCSV.split(",")
+	logging.debug(screensList)
 	for item in screensList:
 		if loc%5==0:
 			URL = item
@@ -59,7 +61,7 @@ def createScreens(screenInfoCSV,task):
 		elif x%5==4:
 			x2 = float(item)
 		else:
-			y2=float(item) #y2 
+			y2=float(item)
 		new_screenWrap=new_screen(URL,label,x1,y1,x2,y2,task)
 		loc+=1
 
@@ -71,7 +73,7 @@ def new_screen(URL,label,x1,y1,x2,y2,privateID):
 		new_screen.nextButtonY1 = y1
 		new_screen.nextButtonX2 = x2
 		new_screen.nextButtonY2 = y2
-		new_screen.nextButtonLabel = label	
+		new_screen.nextButtonLabel = label
 		new_screen.imageURL = URL
 		
 		new_screen.task = get_object_or_404(Task, privateID=privateID)
@@ -90,17 +92,17 @@ def get_task_private(request, privateID):
 	task = Task.objects.get(privateID=privateID)
 	return task
 
-#create a new responce
-def new_responce(request):
+#create a new response
+def new_response(request):
 	if request.method == 'POST':
-		new_responce = Response()
-		new_responce.gender = str(request.POST['gender'])
-		new_responce.age_group = str(request.POST['age'])
-		new_responce.jsonResponceData = str(request.POST['data'])
+		new_response = Response()
+		new_response.gender = str(request.POST['gender'])
+		new_response.age_group = str(request.POST['age'])
+		new_response.jsonresponseData = str(request.POST['data'])
 		
 		publicID = str(request.POST['publicID'])
-		new_responce.task = get_object_or_404(Task, publicID=publicID)
-		new_responce.save()
+		new_response.task = get_object_or_404(Task, publicID=publicID)
+		new_response.save()
 		return HttpResponse('Success')
 	else:
 		return HttpResponse('Error')
