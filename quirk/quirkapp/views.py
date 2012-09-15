@@ -68,7 +68,7 @@ def new_task(request):
 #retrieve a task by its public id task
 def get_task_public(request, publicID):
 	task = Task.objects.get(publicID=publicID)
-		return task
+	return task
 
 #retrieve a task by its private id task
 def get_task_private(request, privateID):
