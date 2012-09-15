@@ -1,6 +1,7 @@
 # Django settings for quirk project.
 import json
 import os
+PROJECT_ROOT = os.path.dirname(__file__)
 with open('/home/dotcloud/environment.json') as f:
   env = json.load(f)
 
