@@ -27,6 +27,7 @@ def newTaskID():
 	return randomString
 
 #create a Task
+@csrf_exempt
 def new_task(request):
 	if request.method == 'POST':
 		new_task = Task()
