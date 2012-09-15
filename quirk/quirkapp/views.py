@@ -61,7 +61,6 @@ def createScreens(screenInfoCSV,task):
 		else:
 			y2=float(item)
 		loc+=1
-
 		if ((loc>0) and (loc%6 == 5)):
 			new_screen(URL,label,x1,y1,x2,y2,task)
 
