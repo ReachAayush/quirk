@@ -135,7 +135,7 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'formatter': 'verbose',
-            'filename': 'quirkErrors.log'
+            'filename': '/home/dotcloud/current/quirkErrors.log'
         }
     },
     'loggers': {
