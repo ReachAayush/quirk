@@ -1,4 +1,4 @@
-from rukkusfm.rukkus.models import Party, Song
+from quirk.quirkapp.models import Party, Song
 from django.contrib import admin
 
 admin.site.register(Party)
