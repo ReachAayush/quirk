@@ -1,6 +1,7 @@
 filepicker.setKey('ASiWD1oxDScaS4gVqOIi-z');
 
 var images = new Array();
+var imageClicked = 0;
 
 $(document).ready(function() {
 	$("#submit").click(function() {
@@ -18,6 +19,11 @@ $(document).ready(function() {
 	    } else {
 	    	$('#main').append('<div class="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
 	    }
+
+	    $('#screen' + images.length).click(function() {
+		    imageClicked = images.length;
+		    alert(imageClicked);
+		});
 
 	    $('#screen' + images.length).Jcrop({
 		    onChange: showCoords,
