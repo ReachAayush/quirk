@@ -65,14 +65,54 @@ def new_task(request):
 	else:
 		return HttpResponse('Error')
 
-#retrieve a task
+#retrieve a task by its public id task
+def get_task_public(request, publicID):
+	task = Task.objects.get(publicID=publicID)
+		return task
+
+#retrieve a task by its private id task
+def get_task_private(request, privateID):
+	task = Task.objects.get(privateID=privateID)
+		return task
 
 #create a new responce
-
-#log data from a responce
+def new_responce(request):
+	if request.method == 'POST':
+		new_responce = Response()
+		new_responce.gender = str(request.POST['gender'])
+		new_responce.age_group = str(request.POST['age'])
+		new_responce.jsonResponceData = str(request.POST['data'])
+		
+		publicID = str(request.POST['publicID'])
+		new_responce.task = get_object_or_404(Task, publicID=publicID)
+		new_responce.save()
+		return HttpResponse('Success')
+	else:
+		return HttpResponse('Error')
 
 #add a screenshot
+def new_screen(request):
+	if request.method == 'POST':
+		new_screen = Screen()
+		new_screen.nextButtonX1 = float(request.POST['X1'])
+		new_screen.nextButtonY1 = float(request.POST['Y1'])
+		new_screen.nextButtonX2 = float(request.POST['X2'])
+		new_screen.nextButtonY2 = float(request.POST['Y2'])
+		new_screen.nextButtonLabel = str(request.POST['buttonLabel'])		
+		new_screen.imageURL = str(request.POST['imageURL'])
+		
+		privateID = str(request.POST['privateID'])
+		new_screen.task = get_object_or_404(Task, privateID=privateID)
+		new_screen.save()
+		return HttpResponse('Success')
+	else:
+		return HttpResponse('Error')
 
-#add next button on a screen shot
+#get screen's nextButton coordinates
+
+#get screen's nextButton label
+
+
+#### analytics helpers ####
 
 

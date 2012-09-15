@@ -25,11 +25,14 @@ class Screen(models.Model):
 	screenID = models.CharField(max_length=3, unique=True)
 
 	#(x1,y1,x2,y2)
-	nextButtonCoords = models.CommaSeparatedIntegerField(max_length=4)
+	nextButtonX1 = models.IntegerField()
+	nextButtonY1 = models.IntegerField()
+	nextButtonX2 = models.IntegerField()
+	nextButtonY2 = models.IntegerField()
 
 	nextButtonLabel = models.CharField(max_length=200)
 
-	image = models.URLField(max_length=200)
+	imageURL = models.URLField(max_length=200)
 	
 
 #model for the individual users' response
@@ -67,7 +70,7 @@ class Response(models.Model):
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=OTHER)
 	
 	#json response from client
-	json=models.TextField()
+	jsonResponceData=models.TextField()
 
 	#task that this response refers to
 	task = models.ForeignKey(Task)
