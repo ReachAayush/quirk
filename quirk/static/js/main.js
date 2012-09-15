@@ -9,6 +9,10 @@ $(document).ready(function() {
   		//$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, imageURLs: images });
 	});
 
+	$("#main").delegate("img","click",function() { 
+		alert($(this).attr('id'));
+	});
+
 	function newImage(url) {
 		images.push(url);
 	    $('#dragScreen').remove();
@@ -20,10 +24,6 @@ $(document).ready(function() {
 	    	$('#main').append('<div class="screenContainer"><img id="screen' + images.length + '" src="' + url + '"></div>');
 	    }
 
-	    $('#screen' + images.length).click(function() {
-		    imageClicked = images.length;
-		    alert(imageClicked);
-		});
 
 	    $('#screen' + images.length).Jcrop({
 		    onChange: showCoords,
