@@ -206,7 +206,8 @@
         x2: c.x2 * xscale,
         y2: c.y2 * yscale,
         w: c.w * xscale,
-        h: c.h * yscale
+        h: c.h * yscale,
+        id: $(obj).attr('id')
       };
     }
     //}}}
@@ -719,12 +720,13 @@
       function makeObj(a) //{{{
       {
         return {
+          var elemid = parseInt($(obj).attr('id')replace('screenWrap', ''));
           x: a[0],
           y: a[1],
           x2: a[2],
           y2: a[3],
           w: a[2] - a[0],
-          h: a[3] - a[1]
+          h: elemid,
         };
       }
       //}}}
