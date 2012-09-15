@@ -91,7 +91,8 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
-	imageClicked = c.replace('screenWrap', '');
+	imageClicked = c.w.replace('screenWrap', '');
+	alert(imageClicked);
 	screens[imageClicked-1].x1 = c.x;
 	screens[imageClicked-1].y1 = c.y;
 	screens[imageClicked-1].x2 = c.x2;
