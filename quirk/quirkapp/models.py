@@ -19,6 +19,8 @@ class Party(models.Model):
 	def __unicode__(self):
 		return str(self.id)
 
+l
+
 class Song(models.Model):
 	party = models.ForeignKey(Party)
 	uri = models.CharField(max_length=200)
