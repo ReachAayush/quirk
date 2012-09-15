@@ -29,7 +29,7 @@
  * }}}
  */
 
-var name = "";
+var elemClicked = "";
 
 (function ($) {
 
@@ -37,7 +37,7 @@ var name = "";
     var options = $.extend({}, $.Jcrop.defaults),
         docOffset, lastcurs, ie6mode = false;
 
-    name = obj["id"];
+    elemClicked = obj["id"];
 
     // Internal Methods {{{
     function px(n) {
@@ -722,20 +722,13 @@ var name = "";
       //}}}
       function makeObj(a) //{{{
       {
-        var num = parseInt(name.substring(6));
+        elemClicked = obj["id"];
         return {
           x: a[0],
           y: a[1],
           x2: a[2],
           y2: a[3],
-<<<<<<< HEAD
-          w: num,
-=======
           w: a[2] - a[0],
-<<<<<<< HEAD
->>>>>>> parent of ceb7ff0... Merge branch 'master' of github.com:jackm321/quirk
-=======
->>>>>>> parent of ceb7ff0... Merge branch 'master' of github.com:jackm321/quirk
           h: a[3] - a[1]
         };
       }

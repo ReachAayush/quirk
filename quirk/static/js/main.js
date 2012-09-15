@@ -97,6 +97,9 @@ $(document).ready(function() {
 });
 
 function showCoords(c) {
+	console.log(elemClicked);
+	elemClicked = parseInt(elemClicked.replace('screen', ''));
+	
 	screens[imageClicked-1].x1 = c.x;
 	screens[imageClicked-1].y1 = c.y;
 	screens[imageClicked-1].x2 = c.x2;
