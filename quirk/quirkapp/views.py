@@ -21,31 +21,6 @@ def home(request):
 def mobileView(request, party_id):
 	return render_to_response('rukkus.html', {'partyID': party_id}, context_instance=RequestContext(request))
 
-# Bulk add song (via post)
-@csrf_exempt
-def example(request):
-	if request.method == 'POST':
-		party_id = str(request.POST['partyID'])
-		nameList = str(request.POST['nameList']).split('*@_*')
-		artistList = str(request.POST['artistList']).split('*@_*')
-		uriList = str(request.POST['uriList']).split('*@_*')
-
-		party = get_object_or_404(Party, partyID=party_id)
-
-		for i in range(len(nameList)):
-			if (uriList[i] != ""):
-				song = Song.objects.filter(party__partyID=party_id,uri=uriList[i])
-				if (len(song) == 0):
-					new_song = Song()
-					new_song.uri = uriList[i]
-					new_song.track = nameList[i]
-					new_song.artist = artistList[i]
-					new_song.upvotes = 1
-					new_song.party = party
-					new_song.save()
-
-	return HttpResponse('Success')
-
 # Generate random
 def newTaskID():
 	randomString = ''.join(random.sample('abcdefghkmnopqrstuvwxyz23456789', 6))
@@ -55,13 +30,46 @@ def newTaskID():
 def new_task(request):
 	if request.method == 'POST':
 		new_task = Task()
-		new_task.taskName = str(request.POST['taskName'])
 		new_task.description = str(request.POST['taskDescription'])
 		new_task.privateID = newTaskID()
 		new_task.publicID = newTaskID()
+		screensCSV = str(request.POST['taskDescription'])
+		createScreens(screensCSV,new_task)
 		new_task.save()
-		response = ({ 'taskName': new_task.taskName , 'privateID': new_task.privateID, 'publicID': new_task.publicTaskID  })
+		response = ({'privateID': new_task.privateID, 'publicID': new_task.publicTaskID  })
 		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
+	else:
+		return HttpResponse('Error')
+
+def createScreens(screenInfoCSV,task):
+	#a comma-sepearted list of information about each screen
+	# URL, label, x1, y1, x2, y2
+	loc=0
+	screensList = screenInfoCSV.split(",")
+	for item in screensList
+		if loc%5==0: URL = item
+		else if x%5==1: label = item
+		else if x%5==2: x1 = float(item)
+		else if x%5==3: y1 = float(item)
+		else if x%5==4: x2 = float(item)
+		else: y2=float(item) #y2 
+		new_screen=new_screen(URL,label,x1,y1,x2,y2,task)
+		loc+=1
+
+#add a screenshot
+def new_screen(URL,label,x1,y1,x2,y2,privateID):
+	if request.method == 'POST':
+		new_screen = Screen()
+		new_screen.nextButtonX1 = x1
+		new_screen.nextButtonY1 = y1
+		new_screen.nextButtonX2 = x2
+		new_screen.nextButtonY2 = y2
+		new_screen.nextButtonLabel = label	
+		new_screen.imageURL = URL
+		
+		new_screen.task = get_object_or_404(Task, privateID=privateID)
+		new_screen.save()
+		return HttpResponse('Success')
 	else:
 		return HttpResponse('Error')
 
@@ -90,24 +98,6 @@ def new_responce(request):
 	else:
 		return HttpResponse('Error')
 
-#add a screenshot
-def new_screen(request):
-	if request.method == 'POST':
-		new_screen = Screen()
-		new_screen.nextButtonX1 = float(request.POST['X1'])
-		new_screen.nextButtonY1 = float(request.POST['Y1'])
-		new_screen.nextButtonX2 = float(request.POST['X2'])
-		new_screen.nextButtonY2 = float(request.POST['Y2'])
-		new_screen.nextButtonLabel = str(request.POST['buttonLabel'])		
-		new_screen.imageURL = str(request.POST['imageURL'])
-		
-		privateID = str(request.POST['privateID'])
-		new_screen.task = get_object_or_404(Task, privateID=privateID)
-		new_screen.save()
-		return HttpResponse('Success')
-	else:
-		return HttpResponse('Error')
-
 #get screen's nextButton coordinates
 def getNextButtonCoords(request,screen):
 	return (screen.X1, screen.Y1, screen.X2, screen.Y2)
@@ -117,9 +107,15 @@ def getNextButtonLabel(request, screen):
 	return screen.nextButtonLabel
 
 
-#get screens from a task
+#get screens from a task's public id
 def getScreensFromPublicID(publicTaskID):
 	queue = Song.objects.filter(task__publicID=publicTaskID).order_by('screenID')
+
+#get screens from a task's private id
+def getScreensFromPrivateID(privateTaskID):
+	queue = Song.objects.filter(task__privateID=privateTaskID).order_by('screenID')
+
+
 
 
 

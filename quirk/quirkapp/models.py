@@ -3,9 +3,6 @@ from django import forms
 
 #model for the developer's task
 class Task(models.Model):
-	#task name
-	taskName = models.CharField(max_length=200)
-	
 	#description
 	description = models.CharField()
 	
