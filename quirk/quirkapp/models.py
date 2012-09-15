@@ -44,13 +44,21 @@ class Task(models.Model):
 	#taskID
 	taskID = models.CharField(max_length=10, unique=True)
 	
-	#screens
-
-
-	#responses
 
 #model for each screen in the Task
 class Screen(models.Model)
+	#task that this screen is part of
+	task = models.ForeignKey(Task)
+
+	# todo?? iterate automatically?
+	screenID = models.CharField(max_length=3, unique=True)
+
+	#(x1,y1,x2,y2)
+	nextButtonCoords = models.CommaSeparatedIntegerField(max_length=4)
+
+	nextButtonLabel = models.CharField(max_length=200)
+
+	image = models.URLField(max_length=200)
 	
 
 #model for the individual users' response
@@ -91,4 +99,7 @@ class Response(models.Model):
 	
 	#json response from client
 	json=models.TextField()
+
+	#task that this response refers to
+	task = models.ForeignKey(Task)
 
