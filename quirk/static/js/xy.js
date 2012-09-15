@@ -1,6 +1,3 @@
-object = document.getElementById("image");// get image object
-object.addEventListener ("mousedown", xy);// add mouse down listener to object
-
 // test mouse handler by showing x and y coordinates
 function xy(evt) {
 	coords = relMouseCoords(evt);
