@@ -21,11 +21,12 @@ $(document).ready(function() {
 
 	    if (((images.length) % 3) == 1) {
 	    	$('#main').append('<div id="dragScreen centerColumn" class="screenContainer"></div>');
+	    	createDrop();
 	    } else {
 	    	$('#main').append('<div id="dragScreen" class="screenContainer"></div>');
+	    	createDrop();
 	    }
 
-	    createDrop();
 	}
 
 	function createDrop() {
