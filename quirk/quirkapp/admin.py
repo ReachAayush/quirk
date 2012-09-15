@@ -1,5 +1,6 @@
-from quirk.quirkapp.models import Party, Song
+from quirk.quirkapp.models import Task, Screen, Response
 from django.contrib import admin
 
-admin.site.register(Party)
-admin.site.register(Song)
+admin.site.register(Task)
+admin.site.register(Screen)
+admin.site.register(Response)
