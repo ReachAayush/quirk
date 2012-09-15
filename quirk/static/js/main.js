@@ -24,7 +24,7 @@ $(document).ready(function() {
 	    if (((screen.length - 1) % 3) == 1) {
 	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer centerColumn"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    } else {
-	    	$('#main').append('<div cid="screenWrap' + screens.length + '"lass="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
+	    	$('#main').append('<div id="screenWrap' + screens.length + '"class="screenContainer"><img id="screen' + screens.length + '" src="' + url + '"></div>');
 	    }
 
 
