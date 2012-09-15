@@ -9,18 +9,18 @@ $(document).ready(function() {
   		var task = $('#taskDescription').val();
   		var screensString = '';
 
-  		for (int i=0; i<screens.length; i++) {
+  		for (i=0; i<screens.length; i++) {
   			if ((i+1) == screens.length) {
   				screensString += screens[i].url;
 	  			screensString += screens[i].x1;
-	  			screensString += screens[i].x2;
 	  			screensString += screens[i].y1;
+	  			screensString += screens[i].x2;
 	  			screensString += screens[i].y2;
   			} else {
 	  			screensString += screens[i].url + ',';
 	  			screensString += screens[i].x1 + ',';
-	  			screensString += screens[i].x2 + ',';
 	  			screensString += screens[i].y1 + ',';
+	  			screensString += screens[i].x2 + ',';
 	  			screensString += screens[i].y2 + ',';
 	  		}
   		}
