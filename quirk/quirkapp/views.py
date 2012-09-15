@@ -47,12 +47,18 @@ def createScreens(screenInfoCSV,task):
 	loc=0
 	screensList = screenInfoCSV.split(",")
 	for item in screensList:
-		if loc%5==0: URL = item
-		else if x%5==1: label = item
-		else if x%5==2: x1 = float(item)
-		else if x%5==3: y1 = float(item)
-		else if x%5==4: x2 = float(item)
-		else: y2=float(item) #y2 
+		if loc%5==0:
+			URL = item
+		elif x%5==1:
+			label = item
+		elif x%5==2:
+			x1 = float(item)
+		elif x%5==3:
+			y1 = float(item)
+		elif x%5==4:
+			x2 = float(item)
+		else:
+			y2=float(item) #y2 
 		new_screen=new_screen(URL,label,x1,y1,x2,y2,task)
 		loc+=1
 
