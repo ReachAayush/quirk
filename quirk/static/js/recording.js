@@ -1,7 +1,7 @@
 startTime = 0;
 
 data = {};
-data.screen1 = [];
+data[0] = [];
 // start time for time recording.
 window.onload = setStartTime();
 
@@ -37,6 +37,7 @@ function xy(evt) {
 
 		if (activeScreen < screens.length) {
 			activeScreen += 1;
+			data[activeScreen] = [];
 			alert('hit');
 			uploadData();
 		} else {
