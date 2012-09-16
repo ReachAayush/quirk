@@ -2,10 +2,10 @@ var analytics;
 var heatMaps = new Array();
 
 $(document).ready(function() {
-  $.getJSON('http://quirk-quirk.dotcloud.com/api/' + privateKey + '/getresponses/', function(data) {
+  $.getJSON('http://quirk-rukkus.dotcloud.com/api/' + privateKey + '/getresponses/', function(data) {
   		analytics = analyzeData(data);
 
-	  $.getJSON('http://quirk-quirk.dotcloud.com/api/getTaskPrivate/' + privateKey, function(data) {
+	  $.getJSON('http://quirk-rukkus.dotcloud.com/api/getTaskPrivate/' + privateKey, function(data) {
 		$.each(data, function(key, val) {
 			if (key == 0) {
 				$('.infoBox h1').html('Task: ' + val);
