@@ -18,7 +18,7 @@ def home(request):
 	return render_to_response('index.html', {}, context_instance=RequestContext(request))
              
 # Quirk newTask view
-def newTask(request, public_key):
+def newTask(request):
 	return render_to_response('newtask.html', {}, context_instance=RequestContext(request))
 
 # Quirk mobile view
