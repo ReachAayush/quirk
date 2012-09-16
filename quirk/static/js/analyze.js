@@ -10,7 +10,7 @@ $(document).ready(function() {
 		if (key == 0) {
 			$('.infoBox h1').html('Task: ' + val);
 		} else {
-			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes">12 seconds<p></div></div>')
+			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes"><p><h2>Average Time Taken</h2><p class="avgTime"><p></div></div>')
 		}
 	});
   });
