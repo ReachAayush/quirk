@@ -28,7 +28,8 @@ $(document).ready(function() {
   		}
   		
   		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString }, function(data) {
-  			console.log(data);
+  			$('#publicURL').val(data['publicID']);
+  			$('#privateURL').val(data['privateID']);
   		});
 	});
 
