@@ -4,11 +4,26 @@ $(document).ready(function() {
   $.getJSON('http://quirk-quirk.dotcloud.com/api/' + privateKey + '/getresponses/', function(data) {
   		analytics = analyzeData(data);
 	});
+
+  $.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/' + publicKey, function(data) {
+	$.each(data, function(key, val) {
+		if (key == 0) {
+			$('.infoBox h1').html('Task: ' + val);
+		} else {
+			$('#main').append('<div id="' + key + '" class="screenWide">
+                			<div class="left">
+                    		<img src="' + val[0] + '">
+                			</div>
+                			<div class="right">
+                    		<h2>Average Time</h2>
+                    		<p>12 seconds<p>
+                			</div>
+            				</div>')
+		}
+	});
 });
 
-function analyzeData(jsonDataObject) {
-	data = jQuery.parseJSON( jsonDataObject );
-	console.log(data);
+function analyzeData(data) {
 	
 	analytics = {};
 	analytics['totalClicks'] = 0;
@@ -56,8 +71,12 @@ function analyzeData(jsonDataObject) {
 		analytics['avgScreenMistakes'][i] = mistakes/analytics['totalUsers'];
 		i+=1;
 	}
+
+	for(i=0; i<analytics['screens']; i++) {
+
+	}
 	
-	//console.log(analytics['totalClicks']);
+	//conddddsole.log(analytics['totalClicks']);
 	console.log(analytics);
 	return analytics;
 }
