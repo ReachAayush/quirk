@@ -190,6 +190,7 @@ body {
     outline: none;
     margin-top: 6px;
     margin-bottom: 30px;
+    border-radius: 2px;
 }
 
 .screenBox {
@@ -241,6 +242,8 @@ body {
 .footer {
     width: 960px;
     height: 130px;
+    position: fixed;
+    bottom: 0px;
     text-align: center;
 }
 
