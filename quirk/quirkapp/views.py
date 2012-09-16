@@ -67,7 +67,7 @@ def createScreens(screenInfoCSV,task):
 		loc+=1
 
 #add a screenshot
-def new_screen(URL,label,x1,y1,x2,y2,privateID):
+def new_screen(URL,label,x1,y1,x2,y2,task):
 	new_screen = Screen()
 	new_screen.nextButtonX1 = x1
 	new_screen.nextButtonY1 = y1
@@ -76,7 +76,7 @@ def new_screen(URL,label,x1,y1,x2,y2,privateID):
 	new_screen.nextButtonLabel = label
 	new_screen.imageURL = URL
 	
-	new_screen.task = get_object_or_404(Task__privateID=privateID)
+	new_screen.task = task
 	new_screen.save()
 
 #retrieve a task by its public id task
