@@ -57,9 +57,11 @@ $(document).ready(function() {
 });
 
 function scaleX(num) {
+	return num;
 	return (num * $(window).width()) / 294;
 }
 
 function scaleY(num) {
+	return num;
 	return (num * $(window).height()) / 420;
 }
