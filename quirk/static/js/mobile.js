@@ -1,4 +1,5 @@
 var screens = Array();
+var activeScreen = 0;
 
 function hideAddressBar() {
   if(!window.location.hash)
@@ -16,7 +17,7 @@ window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddress
 window.addEventListener("orientationchange", hideAddressBar );
 
 $(document).ready(function() {
-	$('#screen').height($(window).height() + 60);
+	$('#screens').height($(window).height() + 60);
 	
 	$.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/' + publicKey, function(data) {
 	  $.each(data, function(key, val) {
@@ -24,27 +25,35 @@ $(document).ready(function() {
 	    	$('#intro').html(val)
 	    } else if (key == 1) {
 	    	https://www.filepicker.io/api/file/y0VknbUzTi6yLNaUWUlW/convert?w=240&h=100
-	    	$('#screens').append('<img id="' + key + '" src="' + val[0] + '/convert?w=' + getWidth() + '&h=' + getHeight() + '">');
+	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '">');
 	    	var screen = new Object();
-	    	screen.x1 = val[1];
-	    	screen.y1 = val[2];
-	    	screen.x2 = val[3];
-	    	screen.y2 = val[4];
+	    	screen.x1 = scaleX(val[1]);
+	    	screen.y1 = scaleY(val[2]);
+	    	screen.x2 = scaleX(val[3]);
+	    	screen.y2 = scaleY(val[4]);
 	    	screens.push(screen);
+	    	hideAddressBar();
 	    } else {
-	    	$('#screens').append('<img id="' + key + '" src="' + val[0] + '/convert?w=' + getWidth() + '&h=' + getHeight() + '" class="hidden">');
+	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '" class="hidden">');
+	    	var screen = new Object();
+	    	screen.x1 = scaleX(val[1]);
+	    	screen.y1 = scaleY(val[2]);
+	    	screen.x2 = scaleX(val[3]);
+	    	screen.y2 = scaleY(val[4]);
+	    	screens.push(screen);
 	    }
-	    
 	  });
-	
+
+		$("#screens").delegate("img:visible", "mouseup", xy);
+
 	});
 	
 });
 
-function getHeight() {
-	$(window).height() + 60;
+function scaleX(num) {
+	return (num * $(window).width()) / 294;
 }
 
-function getWidth() {
-	$(window).width();
+function scaleY(num) {
+	return (num * $(window).height()) / 420;
 }
