@@ -75,6 +75,7 @@ textarea {
     float:left;
     width:321px;
     height:459px;
+    background-repeat: no-repeat;
 }
 
 body {
