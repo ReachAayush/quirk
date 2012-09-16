@@ -60,6 +60,40 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    height: auto;
+    text-align: center;
+}
+
+#intro button {
+  border-radius: 3px;
+  width: 200px;
+  height: 49px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-width: 1px;
+  margin-top: 20px;
+  border-style: solid;
+  border-color: #b0b0b0;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(99%,#dad8d8)); /
+}
+
+#intro button:hover {
+    -webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, .3);
+    box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, .3);
+}
+
+#intro button:active {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dad8d8), color-stop(99%,#efefef)); /
+}
+
+
 #screens {
     position: absolute;
     top: 0;
@@ -72,6 +106,13 @@ textarea {
 
 #finished {
     box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    height: auto;
     background-color: #F6F6F6;
     text-align: center;
     padding-top: 20px;

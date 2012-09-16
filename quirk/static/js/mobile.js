@@ -16,13 +16,21 @@ function hideAddressBar() {
 window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
 window.addEventListener("orientationchange", hideAddressBar );
 
+function beginTrial() {
+	alert('begin');
+	$('#intro').toggleClass('hidden');
+	$('#screens').toggleClass('hidden');
+	setStartTime();
+}
+
 $(document).ready(function() {
 	$('#screens').height($(window).height() + 60);
 	
 	$.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/' + publicKey, function(data) {
 	  $.each(data, function(key, val) {
 	    if (key == 0) {
-	    	$('#intro').html(val)
+	    	$('#intro').html(val);
+	    	$('#intro').append('<a href="javascript:beginTrial()"><button type="button" id="begin">Begin</button></a>');
 	    } else if (key == 1) {
 	    	https://www.filepicker.io/api/file/y0VknbUzTi6yLNaUWUlW/convert?w=240&h=100
 	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '">');
