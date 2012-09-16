@@ -1,4 +1,4 @@
-var screens = Object();
+var screens = Array();
 
 function hideAddressBar() {
   if(!window.location.hash)
