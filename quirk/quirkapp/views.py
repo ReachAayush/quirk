@@ -101,12 +101,12 @@ def getResponses(request, public_key):
 	task = get_object_or_404(Task, publicID=public_key)
 	#get responses, 1 for each user to complete the task.
 	responses = Response.objects.filter(task__publicID=public_key).order_by('id')
-	jsonData = []
+	jsonData = list()
 	#for each response
 	for resp in responses:
 		#ignore any gender/age data for now.
-		clickArray = []
-		for clickData in Click.objects.filter(task__publicID=public_key).order_by('id')
+		clickArray = list()
+		for clickData in (Click.objects.filter(response__publicID=resp).order_by('id')):
 			clickArray.append(dict({'x': clickData.x, 'y': clickData.y, 'hit': clickData.hit, 'time':clickData.time, 'screen':clickData.screen}))
 		jsonData.append(clickArray)
 	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
