@@ -16,7 +16,7 @@ window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddress
 window.addEventListener("orientationchange", hideAddressBar );
 
 $(document).ready(function() {
-	$('#screen').height($(window).height() + 60);
+	$('#screens').height($(window).height() + 60);
 	
 	$.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/' + publicKey, function(data) {
 	  $.each(data, function(key, val) {
@@ -35,9 +35,10 @@ $(document).ready(function() {
 	    } else {
 	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '" class="hidden">');
 	    }
-	    
 	  });
-	
+
+		$("#screens").delegate("img:visible", "mouseup", xy);
+
 	});
 	
 });
