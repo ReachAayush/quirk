@@ -109,7 +109,7 @@ def getResponses(request, public_key):
 		for clickData in (Click.objects.filter(response=resp).order_by('id')):
 			clickArray.append(dict({'x': clickData.x, 'y': clickData.y, 'hit': clickData.hit, 'time':clickData.time, 'screen':clickData.screen}))
 		jsonData.append(clickArray)
-	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
+	return HttpResponse(simplejson.dumps(jsonData),mimetype='application/json')
 
 #get screen's active coordinates
 def getActiveArea(screen):
