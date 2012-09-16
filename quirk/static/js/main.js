@@ -61,10 +61,10 @@ $(document).ready(function() {
 
 	    // center column
 	    if ((screens.length % 3) == 1) {
-	    	$('#main').append('<div id="dragScreen" class="screenContainer centerColumn"></div>');
+	    	$('.screenBox').append('<div id="dragScreen" class="screenContainer centerColumn"></div>');
 	    	createDrop();
 	    } else {
-	    	$('#main').append('<div id="dragScreen" class="screenContainer"></div>');
+	    	$('.screenBox').append('<div id="dragScreen" class="screenContainer"></div>');
 	    	createDrop();
 	    }
 

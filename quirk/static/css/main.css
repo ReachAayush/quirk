@@ -197,6 +197,7 @@ body {
     padding-right: 370px;
     padding-left: 25px; 
     height: auto;
+    min-height: 556px;
     width: 960px;
 }
 
@@ -240,6 +241,7 @@ body {
 .footer {
     width: 960px;
     height: 130px;
+    text-align: center;
 }
 
 .footer button {
