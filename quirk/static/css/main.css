@@ -88,6 +88,24 @@ body {
     font-family: 'din';
 }
 
+#teaser {
+    width: 600px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    text-align: center;
+}
+
+#teaser h1 {
+    font-size: 72pt;
+}
+
+#teaser h2 {
+    font-size: 32pt;
+    font-weight: normal;
+}
+
 #main {
     width: 960px;
     margin-left: auto;
