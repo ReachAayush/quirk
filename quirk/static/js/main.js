@@ -27,7 +27,6 @@ $(document).ready(function() {
 	  		}
   		}
   		
-  		console.log(screensString);
   		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString });
 	});
 

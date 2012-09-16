@@ -18,8 +18,8 @@ def home(request):
 	return render_to_response('index.html', {}, context_instance=RequestContext(request))
                                
 # Rukkus mobile view
-def mobileView(request, party_id):
-	return render_to_response('rukkus.html', {'partyID': party_id}, context_instance=RequestContext(request))
+def mobileView(request, public_key):
+	return render_to_response('mobile.html', {'publicKey': public_key}, context_instance=RequestContext(request))
 
 # Generate random
 def newTaskID():
