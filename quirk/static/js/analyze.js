@@ -4,19 +4,20 @@ var heatMaps = new Array();
 $(document).ready(function() {
   $.getJSON('http://quirk-quirk.dotcloud.com/api/' + privateKey + '/getresponses/', function(data) {
   		analytics = analyzeData(data);
-	});
 
-  $.getJSON('http://quirk-quirk.dotcloud.com/api/getTaskPrivate/' + privateKey, function(data) {
-	$.each(data, function(key, val) {
-		if (key == 0) {
-			$('.infoBox h1').html('Task: ' + val);
-		} else {
-			$('#main').append('<div id="' + key + '" class="screenWide"><div id="' + key + 'heatmap" class="left"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes"><p><h2>Average Time Taken</h2><p class="avgTime"><p></div></div>')
-			$('#' + key + 'heatmap').css('background-image', 'url("' + val[0] + '")');
-			heatMaps[key-1] = h337.create( {"element":document.getElementById(key + "heatmap"), "radius":50, "visible":true});
-			heatMaps[key-1].store.setDataSet(analytics['heatmapData']);
-		}
-	});
+	  $.getJSON('http://quirk-quirk.dotcloud.com/api/getTaskPrivate/' + privateKey, function(data) {
+		$.each(data, function(key, val) {
+			if (key == 0) {
+				$('.infoBox h1').html('Task: ' + val);
+			} else {
+				$('#main').append('<div id="' + key + '" class="screenWide"><div id="' + key + 'heatmap" class="left"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes"><p><h2>Average Time Taken</h2><p class="avgTime"><p></div></div>')
+				$('#' + key + 'heatmap').css('background-image', 'url("' + val[0] + '")');
+				heatMaps[key-1] = h337.create( {"element":document.getElementById(key + "heatmap"), "radius":50, "visible":true});
+				heatMaps[key-1].store.setDataSet(analytics['heatmapData']);
+			}
+		});
+	  });
+
   });
 
 function analyzeData(data) {
