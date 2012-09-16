@@ -125,6 +125,7 @@ def getScreensPrivate(privateTaskID):
 	return screens
 
 #create a new response in the database
+@csrf_exempt
 def new_response(request, public_key):
 	if request.method == 'POST':
 		new_response = Response()
