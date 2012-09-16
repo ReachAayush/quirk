@@ -5,7 +5,7 @@ $(document).ready(function() {
   		analytics = analyzeData(data);
 	});
 
-  $.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/' + publicKey, function(data) {
+  $.getJSON('http://quirk-quirk.dotcloud.com/api/getTaskPrivate/' + privateKey, function(data) {
 	$.each(data, function(key, val) {
 		if (key == 0) {
 			$('.infoBox h1').html('Task: ' + val);
@@ -13,7 +13,7 @@ $(document).ready(function() {
 			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Time</h2><p>12 seconds<p></div></div>')
 		}
 	});
-});
+  });
 
 function analyzeData(data) {
 	
@@ -68,7 +68,7 @@ function analyzeData(data) {
 
 	}
 	
-	//conddddsole.log(analytics['totalClicks']);
 	console.log(analytics);
 	return analytics;
+}
 }

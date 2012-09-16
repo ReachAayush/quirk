@@ -101,6 +101,20 @@ def getTask(request, public_key):
 
 	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 
+def getTaskViaPrivate(request, private_key):
+	task = get_object_or_404(Task, privateID=private_key)
+	screens = getScreensPrivate(private_key)
+
+	response = dict()
+	response[0] = [task.description]
+	key = 1;
+	for item in screens:
+		val = [item.imageURL, item.nextButtonX1, item.nextButtonY1, item.nextButtonX2, item.nextButtonY2]
+		response[key] = val
+		key += 1
+
+	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
+
 def getResponses(request, private_key):
 	task = get_object_or_404(Task, privateID=private_key)
 	#get responses, 1 for each user to complete the task.
