@@ -19,6 +19,7 @@ function analyzeData(jsonDataObject) {
 	analytics['totalMistakes'] = 0;
 	analytics['heatmapData'] = {max: 100, data: []};
 	analytics['screenMistakes'] = [];
+	analytics['screenTime'] = [];
 	
 	// build screen based list
 	for(sx in data) {
@@ -33,7 +34,12 @@ function analyzeData(jsonDataObject) {
 			analytics['heatmapData']['data'][analytics['totalClicks']] = {x: click['x'], y: click['y'], count: 20}
 			
 			analytics['totalClicks'] += 1;
-			analytics['totalTime'] += click['time']-lastTime;
+			timeDiff = click['time']-lastTime
+			analytics['totalTime'] += timeDiff;
+			
+			if(isNaN(analytics['screenTime'][click['screen']])){analytics['screenTime'][click['screen']] = 0;}
+			analytics['screenTime'][click['screen']] += timeDiff;
+			
 			lastTime = click['time'];
 			
 			if(click['hit']==0) {
@@ -54,7 +60,7 @@ function analyzeData(jsonDataObject) {
 	i = 0;
 	analytics['avgScreenMistakes'] = [];
 	for(mistakes in analytics['screenMistakes']) {
-		analytics['avgScreenMistakes'][i] = mistakes/analytics['totalUsers'];
+		analytics['avgScreenMistakes'][i] = (analytics['screenMistakes'][mistakes])/analytics['totalUsers'];
 		i+=1;
 	}
 	
