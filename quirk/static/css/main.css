@@ -140,6 +140,7 @@ body {
     font-size: 32pt;
     margin-bottom: 0px;
     font-family: "Mensch";
+    float: left;
 }
 
 #main nav h1 span {
