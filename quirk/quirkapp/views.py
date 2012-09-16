@@ -151,8 +151,8 @@ def createClicks(data,response):
 
 	for item in data: #for each screen
 		for click in item: # fo each click on screen
-			x = click.x
-			y = click.y
+			x = click['x']
+			y = click['y']
 			time = click.time
 			hit = click.hit
 			new_click(x,y,time,hit,screen,response)
