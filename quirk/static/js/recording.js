@@ -13,7 +13,7 @@ function setStartTime() {
 // builds and submits JSON
 function uploadData() {
 	var jsonData = JSON.stringify(data);
-	//send jsonData to server...
+	console.log(jsonData);
 	return false;
 }
 
@@ -28,7 +28,6 @@ function xy(evt) {
 
 	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())-startTime}
 	data[activeScreen].push(click);
-	console.log(data);
 	
 	if((coords.x > screens[activeScreen].x1) && (coords.x < screens[activeScreen].x2) && 
 		(coords.y > screens[activeScreen].y1) && (coords.y < screens[activeScreen].y2)) {		
@@ -38,13 +37,12 @@ function xy(evt) {
 		if (activeScreen < screens.length) {
 			activeScreen += 1;
 			data[activeScreen] = [];
-			alert('hit');
-			$('#' + activeScreen).hide();
-			$('#' + (activeScreen + 1)).show();
-			uploadData();
+			$('#' + activeScreen).toggleClass('hidden');
+			$('#' + (activeScreen + 1)).toggleClass('hidden');
 		} else {
-			$('#' + activeScreen).hide();
-			alert('finished');
+			$('#' + activeScreen).toggleClass('hidden');
+			$('#finished').toggleClass('hidden');
+			uploadData();
 		}
 	}
 	
