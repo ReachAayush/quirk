@@ -98,10 +98,10 @@ def getTask(request, public_key):
 	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 
 def getResponses(request, public_key):
-    task = get_object_or_404(Task, publicID=public_key)
+	task = get_object_or_404(Task, publicID=public_key)
 	#get responses, 1 for each user to complete the task.
-    responses = Response.objects.filter(task__publicID=public_key).order_by('id')
-    jsonData = []
+	responses = Response.objects.filter(task__publicID=public_key).order_by('id')
+	jsonData = []
 	#for each response
 	for resp in responses:
 		#ignore any gender/age data for now.
