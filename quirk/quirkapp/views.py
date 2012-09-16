@@ -60,27 +60,24 @@ def createScreens(screenInfoCSV,task):
 			x2 = float(item)
 		else:
 			y2=float(item)
-		loc+=1
 
 		if ((loc>0) and (loc%6 == 5)):
 			new_screen(URL,label,x1,y1,x2,y2,task)
 
+		loc+=1
+
 #add a screenshot
-def new_screen(URL,label,x1,y1,x2,y2,privateID):
-	if request.method == 'POST':
-		new_screen = Screen()
-		new_screen.nextButtonX1 = x1
-		new_screen.nextButtonY1 = y1
-		new_screen.nextButtonX2 = x2
-		new_screen.nextButtonY2 = y2
-		new_screen.nextButtonLabel = label
-		new_screen.imageURL = URL
-		
-		new_screen.task = get_object_or_404(Task, privateID=privateID)
-		new_screen.save()
-		return HttpResponse('Success')
-	else:
-		return HttpResponse('Error')
+def new_screen(URL,label,x1,y1,x2,y2,task):
+	new_screen = Screen()
+	new_screen.nextButtonX1 = x1
+	new_screen.nextButtonY1 = y1
+	new_screen.nextButtonX2 = x2
+	new_screen.nextButtonY2 = y2
+	new_screen.nextButtonLabel = label
+	new_screen.imageURL = URL
+	
+	new_screen.task = task
+	new_screen.save()
 
 #retrieve a task by its public id task
 def get_task_public(request, publicID):

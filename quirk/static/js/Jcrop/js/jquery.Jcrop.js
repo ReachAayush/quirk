@@ -29,11 +29,15 @@
  * }}}
  */
 
+var elemClicked = "";
+
 (function ($) {
 
   $.Jcrop = function (obj, opt) {
     var options = $.extend({}, $.Jcrop.defaults),
         docOffset, lastcurs, ie6mode = false;
+
+    elemClicked = obj["id"];
 
     // Internal Methods {{{
     function px(n) {
@@ -206,8 +210,7 @@
         x2: c.x2 * xscale,
         y2: c.y2 * yscale,
         w: c.w * xscale,
-        h: c.h * yscale,
-        id: $(obj).attr('id')
+        h: c.h * yscale
       };
     }
     //}}}
@@ -719,14 +722,14 @@
       //}}}
       function makeObj(a) //{{{
       {
+        elemClicked = obj["id"];
         return {
-          var elemid = parseInt($(obj).attr('id')replace('screenWrap', ''));
           x: a[0],
           y: a[1],
           x2: a[2],
           y2: a[3],
           w: a[2] - a[0],
-          h: elemid,
+          h: a[3] - a[1]
         };
       }
       //}}}
