@@ -127,7 +127,7 @@ def new_response(request, publicTaskID):
 #new_response.gender = str(request.POST['gender'])
 #new_response.age_group = str(request.POST['age'])
     #new_response.jsonresponseData = str(request.POST['data'])
-        jsonData = str(request.POST['data'])
+        jsonData = str(request.POST['log'])
             #clickCSV = str(request.POST['clicks'])
 		data = json.loads(jsonData)
             
