@@ -28,8 +28,8 @@ $(document).ready(function() {
   		}
   		
   		$.post("http://quirk-quirk.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString }, function(data) {
-  			$('#publicURL').val(data['publicID']);
-  			$('#privateURL').val(data['privateID']);
+  			$('#publicURL').val('http://quirk-quirk.dotcloud.com/' + data['publicID']);
+  			$('#privateURL').val('http://quirk-quirk.dotcloud.com/' + data['privateID']);
   		});
 	});
 
