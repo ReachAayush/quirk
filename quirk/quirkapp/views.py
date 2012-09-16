@@ -79,10 +79,19 @@ def new_screen(URL,label,x1,y1,x2,y2,task):
 	new_screen.task = task
 	new_screen.save()
 
-def getTask(request, public_key) {
+def getTask(request, public_key):
 	task = get_object_or_404(Task, publicID=public_key)
-	
-}
+	screens = getScreensPublic(public_key)
+
+	response = dict()
+	response[0] = [task.description]
+	key = 1;
+	for item in screens:
+		val = [item.imageURL, item.nextButtonX1, item.nextButtonY1, item.nextButtonX2, item.nextButtonY2]
+		response[key] = val
+		key += 1
+
+	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 
 #get screen's active coordinates
 def getActiveArea(screen):
@@ -90,11 +99,13 @@ def getActiveArea(screen):
 
 #get screens from a task's public id
 def getScreensPublic(publicTaskID):
-	queue = Screen.objects.filter(task__publicID=publicTaskID).order_by('id')
+	screens = Screen.objects.filter(task__publicID=publicTaskID).order_by('id')
+	return screens
 
 #get screens from a task's private id
 def getScreensPrivate(privateTaskID):
-	queue = Screen.objects.filter(task__privateID=privateTaskID).order_by('id')
+	screens = Screen.objects.filter(task__privateID=privateTaskID).order_by('id')
+	return screens
 
 #create a new response in the database
 def new_response(request):
