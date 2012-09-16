@@ -18,16 +18,6 @@ class Screen(models.Model):
 
 	nextButtonLabel = models.CharField(max_length=200)
 	imageURL = models.URLField(max_length=200)
-	
-
-#model for each click in response
-class Click(models.Model):
-	response = models.ForeignKey(Response)
-	screen = models.IntegerField()
-	x = models.IntegerField()
-	y = models.IntegerField()
-	time = models.IntegerField()
-	hit = models.IntegerField()
 
 #model for the individual users' response
 class Response(models.Model):
@@ -70,3 +60,12 @@ class Response(models.Model):
 
 	#task that this response refers to
 	task = models.ForeignKey(Task)
+
+#model for each click in response
+class Click(models.Model):
+	response = models.ForeignKey(Response)
+	screen = models.IntegerField()
+	x = models.IntegerField()
+	y = models.IntegerField()
+	time = models.IntegerField()
+	hit = models.IntegerField()
