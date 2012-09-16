@@ -16,6 +16,7 @@ $(document).ready(function() {
 				heatMaps[key-1].store.setDataSet(analytics['heatmapData']);
 			}
 		});
+		showIndividualData();
 	  });
 
   });
@@ -58,7 +59,11 @@ function analyzeData(data) {
 		}
 	}
 	
-	// compute aggregate fields:
+	console.log(analytics);
+	return analytics;
+}
+
+function showIndividualData() {
 	analytics['avgTotalTime'] = analytics['totalTime'] / analytics['totalUsers'];
 	analytics['avgTotalMistakes'] = analytics['totalMistakes'] / analytics['totalUsers'];
 	analytics['totalHitPercentage'] = (analytics['totalClicks']-analytics['totalMistakes'])/analytics['totalClicks'];
@@ -76,8 +81,6 @@ function analyzeData(data) {
 	for(n=1; n<=analytics['avgScreenMistakes'].length; n++) {
 
 	}
-	
-	console.log(analytics);
-	return analytics;
 }
+
 });
