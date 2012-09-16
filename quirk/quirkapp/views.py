@@ -149,7 +149,7 @@ def createClicks(data,response):
 	#a json object(decoded) about the click
 	screen = 0
 
-	for key, value in data: #for each screen
+	for key, value in data.iterterms(): #for each screen
 		for click in value: # fo each click on screen
 			x = click['x']
 			y = click['y']
