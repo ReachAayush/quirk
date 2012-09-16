@@ -11,7 +11,6 @@ class Task(models.Model):
 	
 	#public ID for users
 	publicID = models.CharField(max_length=10, unique=True)
-	description = models.CharField(max_length=500)
 	
 #model for each screen in the Task
 class Screen(models.Model):

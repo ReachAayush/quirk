@@ -92,7 +92,20 @@ def get_task_private(request, privateID):
 	task = Task.objects.get(privateID=privateID)
 	return task
 
-#create a new response
+
+#setup a responce (get data from databse to push to the user) 
+#passes to the user:
+#{task description:blablabla,
+# screens:[{sreenID:0,imageURL:www.com,nextButtonLabel:bla,nextButtonX1:0,nextButtonY1:0,nextButtonX2:1,nextButtonY2:1}{}{}]
+def create_new_responce(request,publicID):
+	if request.method == 'GET':
+		httpResponce = []
+		return HttpResponse(httpResponce)
+	else:
+		return HttpResponse('Error')
+
+
+#create a new response in the database
 def new_response(request):
 	if request.method == 'POST':
 		new_response = Response()
@@ -130,4 +143,7 @@ def getScreensFromPrivateID(privateTaskID):
 
 #### analytics helpers ####
 
+#
+
+#
 
