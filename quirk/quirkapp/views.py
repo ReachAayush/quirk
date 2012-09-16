@@ -36,7 +36,7 @@ def new_task(request):
 		new_task.publicID = newTaskID()
 		screensCSV = str(request.POST['screens'])
 		new_task.save()
-		#createScreens(screensCSV, new_task)
+		createScreens(screensCSV, new_task)
 		response = ({'privateID': new_task.privateID, 'publicID': new_task.publicID  })
 		return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 	else:
@@ -76,7 +76,7 @@ def new_screen(URL,label,x1,y1,x2,y2,privateID):
 	new_screen.nextButtonLabel = label
 	new_screen.imageURL = URL
 	
-	new_screen.task = get_object_or_404(Task, privateID=privateID)
+	new_screen.task = get_object_or_404(Task__privateID=privateID)
 	new_screen.save()
 
 #retrieve a task by its public id task
