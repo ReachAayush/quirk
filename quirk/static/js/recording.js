@@ -33,14 +33,17 @@ function xy(evt) {
 	if((coords.x > screens[activeScreen].x1) && (coords.x < screens[activeScreen].x2) && 
 		(coords.y > screens[activeScreen].y1) && (coords.y < screens[activeScreen].y2)) {		
 		
-		hit = 1;
+		click.hit = 1;
 
-		if (activeScreen < screens.length) {
+		if (activeScreen < (screens.length-1)) {
 			activeScreen += 1;
 			data[activeScreen] = [];
 			alert('hit');
+			$('#' + (activeScreen - 1)).hide();
+			$('#' + activeScreen).show();
 			uploadData();
 		} else {
+			$('#' + (activeScreen - 1)).hide();
 			alert('finished');
 		}
 	}

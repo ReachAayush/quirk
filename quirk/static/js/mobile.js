@@ -35,6 +35,12 @@ $(document).ready(function() {
 	    	hideAddressBar();
 	    } else {
 	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '" class="hidden">');
+	    	var screen = new Object();
+	    	screen.x1 = val[1];
+	    	screen.y1 = val[2];
+	    	screen.x2 = val[3];
+	    	screen.y2 = val[4];
+	    	screens.push(screen);
 	    }
 	  });
 
