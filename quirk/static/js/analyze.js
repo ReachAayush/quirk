@@ -10,7 +10,7 @@ $(document).ready(function() {
 		if (key == 0) {
 			$('.infoBox h1').html('Task: ' + val);
 		} else {
-			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Time</h2><p>12 seconds<p></div></div>')
+			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes">12 seconds<p></div></div>')
 		}
 	});
   });
@@ -60,15 +60,15 @@ function analyzeData(data) {
 	i = 0;
 	analytics['avgScreenMistakes'] = [];
 	for(mistakes in analytics['screenMistakes']) {
-		analytics['avgScreenMistakes'][i] = mistakes/analytics['totalUsers'];
+		analytics['avgScreenMistakes'][i] = analytics['avgScreenMistakes'][mistakes]/analytics['totalUsers'];
 		i+=1;
 	}
 
-	for(i=0; i<analytics['screens']; i++) {
-
+	for(i=1; i<=analytics['avgScreenMistakes'].length; i++) {
+		$('#' + i + ' .avgMistakes').html(analytics['avgScreenMistakes'][i]);
 	}
 	
 	console.log(analytics);
 	return analytics;
 }
-}
+});
