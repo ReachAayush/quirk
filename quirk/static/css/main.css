@@ -190,7 +190,6 @@ body {
     outline: none;
     margin-top: 6px;
     margin-bottom: 30px;
-    border-radius: 2px;
 }
 
 .screenBox {
@@ -239,35 +238,37 @@ body {
     font-size: 24pt;
 }
 
-.footer {
-    width: 960px;
-    height: 130px;
-    position: fixed;
-    bottom: 0px;
-    text-align: center;
-}
-
-.footer button {
+.infoBox button {
   border-radius: 3px;
   width: 200px;
   height: 49px;
   padding-left: 15px;
   padding-right: 15px;
   border-width: 1px;
+  margin-top: 20px;
   border-style: solid;
   border-color: #b0b0b0;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#efefef), color-stop(99%,#dad8d8)); /
 }
 
-.footer button:hover {
+.infoBox button:hover {
     -webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, .3);
     box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, .3);
 }
 
-.footer button:active {
+.infoBox button:active {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dad8d8), color-stop(99%,#efefef)); /
 }
 
+#footer {
+    text-align: center;
+    padding-right: 0px;
+}
+
+#footer form {
+    margin-left: 330px;
+    margin-top: 20px;
+}
 
 
 
