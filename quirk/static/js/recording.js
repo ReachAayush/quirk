@@ -27,12 +27,13 @@ function xy(evt) {
 
 	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())-startTime}
 	data[activeScreen].push(click);
+
+	alert(coords.x, coords.y);
 	
 	if((coords.x > screens[activeScreen].x1) && (coords.x < screens[activeScreen].x2) && 
 		(coords.y > screens[activeScreen].y1) && (coords.y < screens[activeScreen].y2)) {		
 		
 		click.hit = 1;
-		alert('hit');
 
 		if (activeScreen < (screens.length - 1)) {
 			activeScreen += 1;
