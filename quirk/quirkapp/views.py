@@ -106,7 +106,7 @@ def getResponses(request, public_key):
 	for resp in responses:
 		#ignore any gender/age data for now.
 		clickArray = list()
-		for clickData in (Click.objects.filter(task__publicID=public_key).order_by('id')):
+		for clickData in (Click.objects.filter(response=resp).order_by('id')):
 			clickArray.append(dict({'x': clickData.x, 'y': clickData.y, 'hit': clickData.hit, 'time':clickData.time, 'screen':clickData.screen}))
 		jsonData.append(clickArray)
 	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
