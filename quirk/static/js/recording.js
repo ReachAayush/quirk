@@ -3,7 +3,7 @@ startTime = 0;
 data = {};
 data[0] = [];
 // start time for time recording.
-window.onload = setStartTime();
+//window.onload = setStartTime();
 
 
 function setStartTime() {

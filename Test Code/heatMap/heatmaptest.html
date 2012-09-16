@@ -23,16 +23,13 @@
 				
 
 				<script type="text/javascript" src="heatmap.js"></script>
+				<script src="jquery.min.js" type="text/javascript"></script>
+				<script type="text/javascript" src="analyze.js"></script>
 		<script type="text/javascript">
-	
+		var xx
 	
 		window.onload = function(){
-			var xx = h337.create( {"element":document.getElementById( "heatmapArea" ), "radius":25, "visible":true});
-			
-			xx.get("canvas").onclick = function(ev){
-				var pos = h337.util.mousePosition(ev);
-				xx.store.addDataPoint(pos[0],pos[1]);
-			};
+			xx = h337.create( {"element":document.getElementById( "heatmapArea" ), "radius":50, "visible":true});
 			
 			// make one of these, then store. simple.
 			var test = { max: 90, data: [
@@ -48,7 +45,7 @@
 						{x: 191, y: 110, count: 20},
 						{x: 511, y: 110, count: 40}
 						]};
-			xx.store.setDataSet(test);
+			xx.store.setDataSet(analytics['heatmapData']);
 		};
 		
 		</script>
