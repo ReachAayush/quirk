@@ -153,7 +153,7 @@ def createClicks(data,response):
 		for click in value: # fo each click on screen
 			x = click['x']
 			y = click['y']
-			time = click['time']
+			time = click['timestamp']
 			hit = click['hit']
 			new_click(x,y,time,hit,screen,response)
 
