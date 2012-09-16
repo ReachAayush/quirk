@@ -30,7 +30,7 @@ $(document).ready(function() {
 	  $.each(data, function(key, val) {
 	    if (key == 0) {
 	    	$('#intro').html(val);
-	    	$('#intro').append('<a href="javascript:beginTrial()"><button type="button" id="begin">Begin</button></a>');
+	    	$('#intro').append('<br><br><a href="javascript:beginTrial()"><button type="button" id="begin">Begin</button></a>');
 	    } else if (key == 1) {
 	    	https://www.filepicker.io/api/file/y0VknbUzTi6yLNaUWUlW/convert?w=240&h=100
 	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '">');

@@ -60,6 +60,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body {
+    background-color: #F6F6F6;
+}
+
 #intro {
     position: absolute;
     top: 0;
@@ -69,6 +73,7 @@ textarea {
     overflow: hidden;
     height: auto;
     text-align: center;
+    font-size: 18pt;
 }
 
 #intro button {
