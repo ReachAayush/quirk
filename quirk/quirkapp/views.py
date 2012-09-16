@@ -16,8 +16,12 @@ import string
 # Home page
 def home(request):
 	return render_to_response('index.html', {}, context_instance=RequestContext(request))
-                               
-# Rukkus mobile view
+             
+# Quirk newTask view
+def newTask(request, public_key):
+	return render_to_response('newTask.html', {}, context_instance=RequestContext(request))
+
+# Quirk mobile view
 def mobileView(request, public_key):
 	return render_to_response('mobile.html', {'publicKey': public_key}, context_instance=RequestContext(request))
 
@@ -121,7 +125,7 @@ def getScreensPrivate(privateTaskID):
 	return screens
 
 #create a new response in the database
-def new_response(request, publicTaskID):
+def new_response(request, public_key):
 	if request.method == 'POST':
 		new_response = Response()
 		#new_response.gender = str(request.POST['gender'])
@@ -134,7 +138,7 @@ def new_response(request, publicTaskID):
 		createClicks(data, new_response)
 		
 		#publicID = str(request.POST['publicID'])
-		new_response.task = get_object_or_404(Task, publicID=publicTaskID)
+		new_response.task = get_object_or_404(Task, publicID=public_key)
 		new_response.save()
 		return HttpResponse('Success')
 	else:

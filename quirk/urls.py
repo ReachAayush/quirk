@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/newtask/$', 'quirk.quirkapp.views.new_task'),
     url(r'^api/getTask/(?P<public_key>[a-zA-Z0-9_.-]+)/$', 'quirk.quirkapp.views.getTask'),
+    url(r'^api/(?P<public_key>[a-zA-Z0-9_.-]+)/newresponse/$', 'quirk.quirkapp.views.new_response'),
     url(r'^(?P<public_key>[a-zA-Z0-9_.-]+)/$', 'quirk.quirkapp.views.mobileView'),
+    url(r'^newtask/$', 'quirk.quirkapp.views.newTask'),
     url(r'^$', 'quirk.quirkapp.views.home'),
 )

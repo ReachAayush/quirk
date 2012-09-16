@@ -13,7 +13,7 @@ function setStartTime() {
 // builds and submits JSON
 function uploadData() {
 	var jsonData = JSON.stringify(data);
-	$.post("http://quirk-quirk.dotcloud.com/api/newresponse/", { log: jsonData });
+	$.post("http://quirk-quirk.dotcloud.com/api/" + publicKey + "/newresponse/", { log: jsonData });
 	return false;
 }
 
