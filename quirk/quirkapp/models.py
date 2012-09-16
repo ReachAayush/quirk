@@ -18,9 +18,6 @@ class Screen(models.Model):
 	#task that this screen is part of
 	task = models.ForeignKey(Task)
 
-	# todo?? iterate automatically?
-	screenID = models.AutoField(primary_key=True)
-
 	#(x1,y1,x2,y2)
 	nextButtonX1 = models.IntegerField()
 	nextButtonY1 = models.IntegerField()
