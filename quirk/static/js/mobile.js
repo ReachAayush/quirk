@@ -24,15 +24,16 @@ $(document).ready(function() {
 	    	$('#intro').html(val)
 	    } else if (key == 1) {
 	    	https://www.filepicker.io/api/file/y0VknbUzTi6yLNaUWUlW/convert?w=240&h=100
-	    	$('#screens').append('<img id="' + key + '" src="' + val[0] + '/convert?w=' + getWidth() + '&h=' + getHeight() + '">');
+	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '">');
 	    	var screen = new Object();
 	    	screen.x1 = val[1];
 	    	screen.y1 = val[2];
 	    	screen.x2 = val[3];
 	    	screen.y2 = val[4];
 	    	screens.push(screen);
+	    	hideAddressBar();
 	    } else {
-	    	$('#screens').append('<img id="' + key + '" src="' + val[0] + '/convert?w=' + getWidth() + '&h=' + getHeight() + '" class="hidden">');
+	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '" class="hidden">');
 	    }
 	    
 	  });
@@ -40,11 +41,3 @@ $(document).ready(function() {
 	});
 	
 });
-
-function getHeight() {
-	$(window).height() + 60;
-}
-
-function getWidth() {
-	$(window).width();
-}
