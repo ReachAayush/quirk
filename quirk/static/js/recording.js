@@ -20,7 +20,6 @@ function uploadData() {
 // test mouse handler by showing x and y coordinates
 function xy(evt) {
 	coords = relMouseCoords(evt);
-	console.log('(' + coords.x + ', ' + coords.y + ')');
 	
 	var coordsX = parseInt(coords.x);
 	var coordsY = parseInt(coords.y);
@@ -35,7 +34,6 @@ function xy(evt) {
 		click.hit = 1;
 
 		if (activeScreen < (screens.length - 1)) {
-			alert('hit');
 			activeScreen += 1;
 			data[activeScreen] = [];
 			$('#' + activeScreen).toggleClass('hidden');
