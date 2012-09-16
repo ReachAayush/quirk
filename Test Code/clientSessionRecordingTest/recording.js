@@ -84,7 +84,7 @@ function compileBioData() {
 
 jQuery(function($){
 
-  $('#boundaryImage').Jcrop({
+  $('#img001').Jcrop({
     onChange:   showCoords,
     onSelect:   showCoords,
     onRelease:  clearCoords
@@ -106,6 +106,8 @@ function showCoords(c)
   bounds.y1 = c.y;
   bounds.x2 = c.x2;
   bounds.y2 = c.y2;
+  //console.log(c.imgnum);
+  console.log(c.w);
 };
 
 function clearCoords()

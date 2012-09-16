@@ -28,13 +28,16 @@
  *
  * }}}
  */
-
+var name = "hello";
 (function ($) {
-
+	//var name = "hello";
   $.Jcrop = function (obj, opt) {
     var options = $.extend({}, $.Jcrop.defaults),
         docOffset, lastcurs, ie6mode = false;
-
+	name = obj['id'];
+	console.log(obj);
+	console.log(obj['id']);
+	console.log(name);
     // Internal Methods {{{
     function px(n) {
       return n + 'px';
@@ -714,17 +717,21 @@
         }
 
         return makeObj(flipCoords(x1, y1, x2, y2));
-      }
+      }.
       //}}}
       function makeObj(a) //{{{
       {
+		name = obj['id'];
+		var num = parseInt(name.substring(3));
+		console.log("N: " + parseInt(name.substring(3)));
         return {
           x: a[0],
           y: a[1],
           x2: a[2],
           y2: a[3],
           w: a[2] - a[0],
-          h: a[3] - a[1]
+          h: a[3] - a[1],
+		  w: num
         };
       }
       //}}}

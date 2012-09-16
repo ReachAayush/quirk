@@ -40,10 +40,10 @@ class Response(models.Model):
 	
 	AGE_GROUPS = (
 		(AGEGROUP1, 'group1'),
-		(AGEGROUP1, 'group2'),
-		(AGEGROUP1, 'group3'),
-		(AGEGROUP1, 'group4'),
-		(AGEGROUP1, 'group5'),
+		(AGEGROUP2, 'group2'),
+		(AGEGROUP3, 'group3'),
+		(AGEGROUP4, 'group4'),
+		(AGEGROUP5, 'group5'),
 	)
 
 	age_group = models.IntegerField(choices=AGE_GROUPS, default=0)
@@ -52,7 +52,7 @@ class Response(models.Model):
 	#gender
 	MALE = 'M'
 	FEMALE = 'F'
-	OTHER = 'O'
+	OTHER = 'O' # letter, not number.
 
 	GENDER_CHOICES = (
 		(MALE, 'Male'),
