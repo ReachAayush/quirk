@@ -134,7 +134,7 @@ def new_response(request, public_key):
 		#new_response.jsonresponseData = str(request.POST['data'])
 		jsonData = str(request.POST['log'])
 		#clickCSV = str(request.POST['clicks'])
-		data = json.loads(jsonData)
+		data = simplejson.loads(jsonData)
 
 		createClicks(data, new_response)
 		
