@@ -1,3 +1,5 @@
+var screens = Object();
+
 function hideAddressBar() {
   if(!window.location.hash)
   {
@@ -16,11 +18,22 @@ window.addEventListener("orientationchange", hideAddressBar );
 $(document).ready(function() {
 	$('#screen').height($(window).height() + 60);
 	
-	$.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/xhk3ao/' + publicKey, function(data) {
-		alert('success');
-	
+	$.getJSON('http://quirk-quirk.dotcloud.com/api/getTask/' + publicKey, function(data) {
 	  $.each(data, function(key, val) {
-	    
+	    if (key == 0) {
+	    	$('#intro').html(val)
+	    } else if (key == 1) {
+	    	https://www.filepicker.io/api/file/y0VknbUzTi6yLNaUWUlW/convert?w=240&h=100
+	    	$('#screens').append('<img id="' + key + '" src="' + val[0] + '/convert?w=' + getWidth() + '&h=' + getHeight() + '">');
+	    	var screen = new Object();
+	    	screen.x1 = val[1];
+	    	screen.y1 = val[2];
+	    	screen.x2 = val[3];
+	    	screen.y2 = val[4];
+	    	screens.push(screen);
+	    } else {
+	    	$('#screens').append('<img id="' + key + '" src="' + val[0] + '/convert?w=' + getWidth() + '&h=' + getHeight() + '" class="hidden">');
+	    }
 	    
 	  });
 	
@@ -29,9 +42,9 @@ $(document).ready(function() {
 });
 
 function getHeight() {
-	$(window).height()
+	$(window).height() + 60;
 }
 
 function getWidth() {
-	$(window).width()
+	$(window).width();
 }
