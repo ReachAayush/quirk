@@ -140,7 +140,6 @@ body {
     font-size: 32pt;
     margin-bottom: 0px;
     font-family: "Mensch";
-    float: left;
 }
 
 #main nav h1 span {
@@ -164,6 +163,7 @@ body {
     height: 235px;
     padding-top: 15px;
     padding-right: 370px;
+    border: 0px;
 }
 
 .infoBox h1 {
@@ -180,13 +180,14 @@ body {
 }
 
 .infoBox input {
-    float: right;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    margin-left: -3px;
-    padding: 4px 5px;
-    border: 1px solid #AAA;
-    background: #fff;
+    background-color: transparent;
+    padding: 3px 10px 0 15px;
+    width: 240px;
+    height: 30px;
+    font-size: 13px;
+    outline: none;
+    margin-top: 6px;
+    margin-bottom: 30px;
 }
 
 .screenContainer {
