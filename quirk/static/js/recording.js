@@ -35,15 +35,15 @@ function xy(evt) {
 		
 		click.hit = 1;
 
-		if (activeScreen < (screens.length-1)) {
+		if (activeScreen < screens.length) {
 			activeScreen += 1;
 			data[activeScreen] = [];
 			alert('hit');
-			$('#' + (activeScreen - 1)).hide();
-			$('#' + activeScreen).show();
+			$('#' + activeScreen).hide();
+			$('#' + (activeScreen + 1)).show();
 			uploadData();
 		} else {
-			$('#' + (activeScreen - 1)).hide();
+			$('#' + activeScreen).hide();
 			alert('finished');
 		}
 	}
