@@ -27,9 +27,9 @@ $(document).ready(function() {
 	  		}
   		}
   		
-  		$.post("http://quirk-rukkus.dotcloud.com/api/newtask/", { taskDescription: task, screens: screensString }, function(data) {
-  			$('#publicURL').val('http://quirk-rukkus.dotcloud.com/' + data['publicID']);
-  			$('#privateURL').val('http://quirk-rukkus.dotcloud.com/' + data['privateID']);
+  		$.post("http://www.tryquirk.com/api/newtask/", { taskDescription: task, screens: screensString }, function(data) {
+  			$('#publicURL').val('http://www.tryquirk.com/' + data['publicID']);
+  			$('#privateURL').val('http://www.tryquirk.com/' + data['privateID']);
   		});
 	});
 

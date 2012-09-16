@@ -25,7 +25,7 @@ function beginTrial() {
 $(document).ready(function() {
 	$('#screens').height($(window).height() + 60);
 	
-	$.getJSON('http://quirk-rukkus.dotcloud.com/api/getTask/' + publicKey, function(data) {
+	$.getJSON('http://www.tryquirk.com/api/getTask/' + publicKey, function(data) {
 	  $.each(data, function(key, val) {
 	    if (key == 0) {
 	    	$('#intro').html(val);
