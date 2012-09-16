@@ -13,7 +13,7 @@ function setStartTime() {
 // builds and submits JSON
 function uploadData() {
 	var jsonData = JSON.stringify(data);
-	console.log(jsonData);
+	$.post("http://quirk-quirk.dotcloud.com/api/newresponse/", { log: jsonData });
 	return false;
 }
 
@@ -34,15 +34,15 @@ function xy(evt) {
 		
 		click.hit = 1;
 
-		if (activeScreen < screens.length) {
+		if (activeScreen < (screens.length - 1)) {
 			activeScreen += 1;
 			data[activeScreen] = [];
 			$('#' + activeScreen).toggleClass('hidden');
 			$('#' + (activeScreen + 1)).toggleClass('hidden');
 		} else {
+			uploadData();
 			$('#' + activeScreen).toggleClass('hidden');
 			$('#finished').toggleClass('hidden');
-			uploadData();
 		}
 	}
 	
