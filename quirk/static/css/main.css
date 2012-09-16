@@ -93,17 +93,24 @@ body {
     height: 200px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 100px;
     color: #fff;
     text-align: center;
 }
 
 #teaser h1 {
-    font-size: 72pt;
+    font-size: 65pt;
+    margin-bottom: 0px;
 }
 
 #teaser h2 {
-    font-size: 32pt;
+    font-size: 28pt;
     font-weight: normal;
+    margin-top: 0px;
+}
+
+#teaser h2 span {
+    font-weight: bold;
 }
 
 #main {

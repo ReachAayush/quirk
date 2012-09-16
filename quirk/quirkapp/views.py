@@ -129,6 +129,8 @@ def getScreensPrivate(privateTaskID):
 def new_response(request, public_key):
 	if request.method == 'POST':
 		new_response = Response()
+		new_response.save()
+
 		#new_response.gender = str(request.POST['gender'])
 		#new_response.age_group = str(request.POST['age'])
 		#new_response.jsonresponseData = str(request.POST['data'])
@@ -140,7 +142,6 @@ def new_response(request, public_key):
 		
 		#publicID = str(request.POST['publicID'])
 		new_response.task = get_object_or_404(Task, publicID=public_key)
-		new_response.save()
 		return HttpResponse('Success')
 	else:
 		return HttpResponse('Error')
