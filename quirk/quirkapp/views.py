@@ -22,7 +22,7 @@ def newTask(request):
 	return render_to_response('newtask.html', {}, context_instance=RequestContext(request))
 
 # Quirk analytics view
-def analytics(request):
+def analytics(request, private_key):
 	return render_to_response('analytics.html', {'privateKey': private_key}, context_instance=RequestContext(request))
 
 # Quirk mobile view
