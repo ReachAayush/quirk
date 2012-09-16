@@ -145,7 +145,7 @@ def new_response(request, public_key):
 	else:
 		return HttpResponse('Error')
 
-def createClicks(data,response):
+def createClicks(data,new_response):
 	#a json object(decoded) about the click
 	screen = 0
 
@@ -155,17 +155,17 @@ def createClicks(data,response):
 			y = click['y']
 			time = click['timestamp']
 			hit = click['hit']
-			new_click(x,y,time,hit,screen,response)
+			new_click(x,y,time,hit,screen,new_response)
 
 		screen += 1
 
 #add a click
-def new_click(x,y,time,hit,screen,response):
+def new_click(x,y,time,hit,screen,new_response):
 	new_click = Click()
 	new_click.x = x
 	new_click.y = y
 	new_click.time = time
 	new_click.hit = hit
 	new_click.screen = screen
-	new_click.response = response       
+	new_click.response = new_response
 	new_click.save()
