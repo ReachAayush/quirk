@@ -1,4 +1,5 @@
 var analytics;
+var heatMaps = new Array();
 
 $(document).ready(function() {
   $.getJSON('http://quirk-quirk.dotcloud.com/api/' + privateKey + '/getresponses/', function(data) {
@@ -10,7 +11,10 @@ $(document).ready(function() {
 		if (key == 0) {
 			$('.infoBox h1').html('Task: ' + val);
 		} else {
-			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes"><p><h2>Average Time Taken</h2><p class="avgTime"><p></div></div>')
+			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"></div><div class="right"><h2>Average Number of Mistakes</h2><p class="avgMistakes"><p><h2>Average Time Taken</h2><p class="avgTime"><p></div></div>')
+			$('#' + key + ' .left').css('background-image', 'url("' + val[0] + '")');
+			heatMaps[key-1] = h337.create( {"element":$('#'+key+' .left'), "radius":50, "visible":true});
+			heatMaps[key-1].store.setDataSet(analytics['heatmapData']);
 		}
 	});
   });
@@ -60,12 +64,16 @@ function analyzeData(data) {
 	i = 0;
 	analytics['avgScreenMistakes'] = [];
 	for(mistakes in analytics['screenMistakes']) {
-		analytics['avgScreenMistakes'][i] = analytics['avgScreenMistakes'][mistakes]/analytics['totalUsers'];
+		analytics['avgScreenMistakes'][i] = (analytics['screenMistakes'][mistakes])/analytics['totalUsers'];
 		i+=1;
 	}
 
 	for(i=1; i<=analytics['avgScreenMistakes'].length; i++) {
-		$('#' + i + ' .avgMistakes').html(analytics['avgScreenMistakes'][i]);
+		$('#' + i + ' .avgMistakes').html(analytics['avgScreenMistakes'][i-1]);
+	}
+
+	for(n=1; n<=analytics['avgScreenMistakes'].length; n++) {
+
 	}
 	
 	console.log(analytics);

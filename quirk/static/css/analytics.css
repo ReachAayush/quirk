@@ -70,6 +70,13 @@ textarea {
     font-style: normal;
 }
 
+.screenWide .left {
+    position:relative;
+    float:left;
+    width:321px;
+    height:459px;
+}
+
 body {
     background-color: #F6F6F6;
     color: #4b4b4b;
