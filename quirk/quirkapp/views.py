@@ -83,7 +83,7 @@ def getTask(request, public_key):
 	task = get_object_or_404(Task, publicID=public_key)
 	screens = getScreensPublic(public_key)
 
-	response = list()
+	response = dict()
 	response[0] = [task.description]
 	key = 1;
 	for item in screens:
