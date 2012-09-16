@@ -3,28 +3,20 @@ from django import forms
 
 #model for the developer's task
 class Task(models.Model):
-	#description
 	description = models.CharField(max_length=500)
-	
-	#private ID for the developer
 	privateID = models.CharField(max_length=10, unique=True)
-	
-	#public ID for users
 	publicID = models.CharField(max_length=10, unique=True)
 	
 #model for each screen in the Task
 class Screen(models.Model):
-	#task that this screen is part of
 	task = models.ForeignKey(Task)
 
-	#(x1,y1,x2,y2)
 	nextButtonX1 = models.IntegerField()
 	nextButtonY1 = models.IntegerField()
 	nextButtonX2 = models.IntegerField()
 	nextButtonY2 = models.IntegerField()
 
 	nextButtonLabel = models.CharField(max_length=200)
-
 	imageURL = models.URLField(max_length=200)
 	
 
