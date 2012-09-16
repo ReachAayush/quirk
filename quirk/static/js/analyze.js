@@ -59,8 +59,8 @@ function analyzeData(data) {
 		}
 	}
 
-	$('#main .infoBox').html(analytics['totalUsers']);
-	$('#main .infoBox').html(' / ' + analytics['avgTotalMistakes']);
+	$('#overall').html(analytics['totalUsers']);
+	$('#overall').html(' / ' + analytics['avgTotalMistakes']);
 	
 	console.log(analytics);
 	return analytics;
