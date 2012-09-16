@@ -77,7 +77,7 @@ function showIndividualData() {
 	}
 
 	for(i=1; i<=analytics['avgScreenMistakes'].length; i++) {
-		$('#' + i + ' .avgMistakes').html(analytics['avgScreenMistakes'][i-1]);
+		$('#' + i + ' .avgMistakes').html(Math.round(analytics['avgScreenMistakes'][i-1] * 100)/100);
 	}
 
 	for(n=1; n<=analytics['avgScreenMistakes'].length; n++) {
