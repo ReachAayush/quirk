@@ -35,6 +35,7 @@ function xy(evt) {
 		click.hit = 1;
 
 		if (activeScreen < (screens.length - 1)) {
+			alert('hit');
 			activeScreen += 1;
 			data[activeScreen] = [];
 			$('#' + activeScreen).toggleClass('hidden');
