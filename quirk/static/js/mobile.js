@@ -29,7 +29,7 @@ $(document).ready(function() {
 	  $.each(data, function(key, val) {
 	    if (key == 0) {
 	    	$('#intro').html(val);
-	    	$('#intro').append('<br><br><a href="javascript:beginTrial()"><button type="button" id="begin">Begin</button></a>');
+	    	$('#intro').append('<br><a href="javascript:beginTrial()"><button type="button" id="begin">Begin</button></a>');
 	    } else if (key == 1) {
 	    	$('#screens').append('<img style="width:100%;height:100%;" id="' + key + '" src="' + val[0] + '">');
 	    	var screen = new Object();

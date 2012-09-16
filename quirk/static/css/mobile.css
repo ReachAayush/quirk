@@ -74,6 +74,7 @@ body {
     height: auto;
     text-align: center;
     font-size: 18pt;
+    padding-top: 30px;
 }
 
 #intro button {
