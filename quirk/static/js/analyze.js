@@ -57,10 +57,9 @@ function analyzeData(data) {
 				analytics['screens'] = click['screen']+1;
 			
 		}
-	}
 
-	$('#overall').html(analytics['totalUsers']);
-	$('#overall').html(' / ' + analytics['avgTotalMistakes']);
+		$('#overall').html(analytics['totalUsers']);
+	}
 	
 	console.log(analytics);
 	return analytics;
