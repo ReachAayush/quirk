@@ -79,28 +79,22 @@ def new_screen(URL,label,x1,y1,x2,y2,task):
 	new_screen.task = task
 	new_screen.save()
 
-#retrieve a task by its public id task
-def get_task_public(request, publicID):
-	task = Task.objects.get(publicID=publicID)
-	return task
+def getTask(request, public_key) {
+	task = get_object_or_404(Task, publicID=public_key)
+	
+}
 
-#retrieve a task by its private id task
-def get_task_private(request, privateID):
-	task = Task.objects.get(privateID=privateID)
-	return task
+#get screen's active coordinates
+def getActiveArea(screen):
+	return (screen.X1, screen.Y1, screen.X2, screen.Y2)
 
+#get screens from a task's public id
+def getScreensPublic(publicTaskID):
+	queue = Screen.objects.filter(task__publicID=publicTaskID).order_by('id')
 
-#setup a responce (get data from databse to push to the user) 
-#passes to the user:
-#{task description:blablabla,
-# screens:[{sreenID:0,imageURL:www.com,nextButtonLabel:bla,nextButtonX1:0,nextButtonY1:0,nextButtonX2:1,nextButtonY2:1}{}{}]
-def create_new_responce(request,publicID):
-	if request.method == 'GET':
-		httpResponce = []
-		return HttpResponse(httpResponce)
-	else:
-		return HttpResponse('Error')
-
+#get screens from a task's private id
+def getScreensPrivate(privateTaskID):
+	queue = Screen.objects.filter(task__privateID=privateTaskID).order_by('id')
 
 #create a new response in the database
 def new_response(request):
@@ -116,31 +110,3 @@ def new_response(request):
 		return HttpResponse('Success')
 	else:
 		return HttpResponse('Error')
-
-#get screen's nextButton coordinates
-def getNextButtonCoords(request,screen):
-	return (screen.X1, screen.Y1, screen.X2, screen.Y2)
-
-#get screen's nextButton label
-def getNextButtonLabel(request, screen):
-	return screen.nextButtonLabel
-
-
-#get screens from a task's public id
-def getScreensFromPublicID(publicTaskID):
-	queue = Song.objects.filter(task__publicID=publicTaskID).order_by('screenID')
-
-#get screens from a task's private id
-def getScreensFromPrivateID(privateTaskID):
-	queue = Song.objects.filter(task__privateID=privateTaskID).order_by('screenID')
-
-
-
-
-
-#### analytics helpers ####
-
-#
-
-#
-
