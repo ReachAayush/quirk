@@ -42,7 +42,7 @@ function xy(evt) {
 			$('#' + (activeScreen + 1)).toggleClass('hidden');
 		} else {
 			uploadData();
-			$('#' + activeScreen).toggleClass('hidden');
+			$('#' + (activeScreen + 1)).toggleClass('hidden');
 			$('#finished').toggleClass('hidden');
 		}
 	}
