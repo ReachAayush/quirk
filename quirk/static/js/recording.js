@@ -32,6 +32,7 @@ function xy(evt) {
 		(coords.y > screens[activeScreen].y1) && (coords.y < screens[activeScreen].y2)) {		
 		
 		click.hit = 1;
+		alert('hit');
 
 		if (activeScreen < (screens.length - 1)) {
 			activeScreen += 1;
