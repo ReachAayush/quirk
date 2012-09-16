@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
-from quirk.quirkapp.models import Task, Screen, Response
+from quirk.quirkapp.models import Task, Screen, Response, Click
 from django.utils import simplejson
 from django.core import serializers
 from datetime import datetime
