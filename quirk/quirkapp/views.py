@@ -21,6 +21,10 @@ def home(request):
 def newTask(request):
 	return render_to_response('newtask.html', {}, context_instance=RequestContext(request))
 
+# Quirk analytics view
+def analytics(request):
+	return render_to_response('analytics.html', {'privateKey': private_key}, context_instance=RequestContext(request))
+
 # Quirk mobile view
 def mobileView(request, public_key):
 	return render_to_response('mobile.html', {'publicKey': public_key}, context_instance=RequestContext(request))
@@ -97,10 +101,10 @@ def getTask(request, public_key):
 
 	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 
-def getResponses(request, public_key):
-	task = get_object_or_404(Task, publicID=public_key)
+def getResponses(request, private_key):
+	task = get_object_or_404(Task, privateID=private_key)
 	#get responses, 1 for each user to complete the task.
-	responses = Response.objects.filter(task__publicID=public_key).order_by('id')
+	responses = Response.objects.filter(task__privateID=private_key).order_by('id')
 	jsonData = list()
 	#for each response
 	for resp in responses:
