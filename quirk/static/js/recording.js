@@ -1,5 +1,3 @@
-bounds = {};
-
 startTime = 0;
 
 data = {};
@@ -23,24 +21,28 @@ function uploadData() {
 function xy(evt) {
 	coords = relMouseCoords(evt);
 	console.log('(' + coords.x + ', ' + coords.y + ')');
-	console.log(coords.x);
-	console.log(bounds['x1']);
 	
 	var coordsX = parseInt(coords.x);
 	var coordsY = parseInt(coords.y);
 	var hit = 0;
+
+	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())-startTime}
+	data[activeScreen].push(click);
+	console.log(data);
 	
-	if((coords.x > bounds['x1']) && (coords.x < bounds['x2']) && 
-			(coords.y > bounds['y1']) && (coords.y < bounds['y2'])) {
-		// if last screen, build and send json object
-		uploadData();
+	if((coords.x > screens[activeScreen].x1) && (coords.x < screens[activeScreen].x2) && 
+		(coords.y > screens[activeScreen].y1) && (coords.y < screens[activeScreen].y2)) {		
 		
 		hit = 1;
+
+		if (activeScreen < screens.length) {
+			activeScreen += 1;
+			alert('hit');
+			uploadData();
+		} else {
+			alert('finished');
+		}
 	}
-	
-	click = {x:coords.x, y:coords.y, hit:hit, timestamp:(new Date().getTime())-startTime}
-	data.screen1.push(click);
-	console.log(data);
 	
 	return false;
 }
