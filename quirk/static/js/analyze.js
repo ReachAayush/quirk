@@ -10,15 +10,7 @@ $(document).ready(function() {
 		if (key == 0) {
 			$('.infoBox h1').html('Task: ' + val);
 		} else {
-			$('#main').append('<div id="' + key + '" class="screenWide">
-                			<div class="left">
-                    		<img src="' + val[0] + '">
-                			</div>
-                			<div class="right">
-                    		<h2>Average Time</h2>
-                    		<p>12 seconds<p>
-                			</div>
-            				</div>')
+			$('#main').append('<div id="' + key + '" class="screenWide"><div class="left"><img src="' + val[0] + '"></div><div class="right"><h2>Average Time</h2><p>12 seconds<p></div></div>')
 		}
 	});
 });
