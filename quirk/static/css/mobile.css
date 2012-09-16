@@ -70,14 +70,12 @@ textarea {
     height: auto;
 }
 
-
-
-
-
-
-
-
-
+#finished {
+    box-sizing: border-box;
+    background-color: #F6F6F6;
+    text-align: center;
+    padding-top: 20px;
+}
 
 
 /* ==========================================================================
