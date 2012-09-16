@@ -98,17 +98,18 @@ def getTask(request, public_key):
 	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 
 def getResponses(request, public_key):
-    #task = get_object_or_404(Task, publicID=public_key)
-    #responses = Response.objects.filter(task__publicID=publicTaskID).order_by('id')
-    #jsonData = dict()
-    #build json data object, then return it.
-    #clickArray =
-    #####################
-    #for item in responses:
-    #   resp = dict({'ageGroup': item.age_group, 'gender': item.gender, 'clicks': #clickArray})
-        
-	#return HttpResponse(simplejson.dumps(response),mimetype='application/json')
-	return false
+    task = get_object_or_404(Task, publicID=public_key)
+	#get responses, 1 for each user to complete the task.
+    responses = Response.objects.filter(task__publicID=public_key).order_by('id')
+    jsonData = []
+	#for each response
+	for resp in responses:
+		#ignore any gender/age data for now.
+		clickArray = []
+		for clickData in Click.objects.filter(response__task=task)# FIX FIX FIX
+			clickArray.append(dict({'x': clickData.x, 'y': clickData.y, 'hit': clickData.hit, 'time':clickData.time, 'screen':clickData.screen}))
+		jsonData.append(clickArray)
+	return HttpResponse(simplejson.dumps(response),mimetype='application/json')
 
 #get screen's active coordinates
 def getActiveArea(screen):
