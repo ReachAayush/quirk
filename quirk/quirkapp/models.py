@@ -22,16 +22,16 @@ class Screen(models.Model):
 
 #model for each click in response
 class Click(models.Model):
-    response = models.ForeignKey(Response)
-    screen = models.IntegerField()
+	response = models.ForeignKey(Response)
+	screen = models.IntegerField()
 	x = models.IntegerField()
 	y = models.IntegerField()
 	time = models.IntegerField()
 	hit = models.IntegerField()
-    
+
 #model for the individual users' response
 class Response(models.Model):
-    task = models.ForeignKey(Task)
+	task = models.ForeignKey(Task)
 
 	#demographics
 	#age group

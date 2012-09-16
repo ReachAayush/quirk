@@ -103,8 +103,8 @@ def getResponses(request, public_key):
     #for item in responses:
     #   resp = dict({'ageGroup': item.age_group, 'gender': item.gender, 'clicks': #clickArray})
         
-#return HttpResponse(simplejson.dumps(response),mimetype='application/json')
-    return false
+	#return HttpResponse(simplejson.dumps(response),mimetype='application/json')
+	return false
 
 #get screen's active coordinates
 def getActiveArea(screen):
@@ -124,16 +124,16 @@ def getScreensPrivate(privateTaskID):
 def new_response(request, publicTaskID):
 	if request.method == 'POST':
 		new_response = Response()
-#new_response.gender = str(request.POST['gender'])
-#new_response.age_group = str(request.POST['age'])
-    #new_response.jsonresponseData = str(request.POST['data'])
-        jsonData = str(request.POST['log'])
-            #clickCSV = str(request.POST['clicks'])
+		#new_response.gender = str(request.POST['gender'])
+		#new_response.age_group = str(request.POST['age'])
+		#new_response.jsonresponseData = str(request.POST['data'])
+		jsonData = str(request.POST['log'])
+		#clickCSV = str(request.POST['clicks'])
 		data = json.loads(jsonData)
-            
+
 		createClicks(data, new_response)
 		
-            #publicID = str(request.POST['publicID'])
+		#publicID = str(request.POST['publicID'])
 		new_response.task = get_object_or_404(Task, publicID=publicTaskID)
 		new_response.save()
 		return HttpResponse('Success')
@@ -143,25 +143,24 @@ def new_response(request, publicTaskID):
 def createClicks(data,response):
 	#a json object(decoded) about the click
 	screen = 0
-    
+
 	for item in data: #for each screen
-        for click in item: # fo each click on screen
+		for click in item: # fo each click on screen
 			x = click.x
-            y = click.y
-            time = click.time
-            hit = click.hit
+			y = click.y
+			time = click.time
+			hit = click.hit
 			new_click(x,y,time,hit,screen,response)
-        
+
 		screen += 1
 
 #add a click
 def new_click(x,y,time,hit,screen,response):
-    new_click = Click()
+	new_click = Click()
 	new_click.x = x
-    new_click.y = y
-    new_click.time = time
-    new_click.hit = hit
-    new_click.screen = screen
-	new_click.response = response
-        
+	new_click.y = y
+	new_click.time = time
+	new_click.hit = hit
+	new_click.screen = screen
+	new_click.response = response       
 	new_click.save()
