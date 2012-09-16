@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^api/(?P<public_key>[a-zA-Z0-9_.-]+)/newresponse/$', 'quirk.quirkapp.views.new_response'),
     url(r'^api/(?P<private_key>[a-zA-Z0-9_.-]+)/getresponses/$', 'quirk.quirkapp.views.getResponses'),
     url(r'^newtask/$', 'quirk.quirkapp.views.newTask'),
+    url(r'^(?P<private_key>[a-zA-Z0-9_.-]+)/analytics/$', 'quirk.quirkapp.views.analytics'),
     url(r'^(?P<public_key>[a-zA-Z0-9_.-]+)/$', 'quirk.quirkapp.views.mobileView'),
-    url(r'^(?P<private_key>[a-zA-Z0-9_.-]+)/$', 'quirk.quirkapp.views.analytics'),
     url(r'^$', 'quirk.quirkapp.views.home'),
 )
