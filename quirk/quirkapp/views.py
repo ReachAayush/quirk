@@ -149,12 +149,12 @@ def createClicks(data,response):
 	#a json object(decoded) about the click
 	screen = 0
 
-	for item in data: #for each screen
-		for click in item: # fo each click on screen
+	for key, value in data: #for each screen
+		for click in value: # fo each click on screen
 			x = click['x']
 			y = click['y']
-			time = click.time
-			hit = click.hit
+			time = click['time']
+			hit = click['hit']
 			new_click(x,y,time,hit,screen,response)
 
 		screen += 1
