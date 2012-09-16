@@ -17,7 +17,6 @@ window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddress
 window.addEventListener("orientationchange", hideAddressBar );
 
 function beginTrial() {
-	alert('begin');
 	$('#intro').toggleClass('hidden');
 	$('#screens').toggleClass('hidden');
 	setStartTime();
