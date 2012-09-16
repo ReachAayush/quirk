@@ -58,7 +58,7 @@ function analyzeData(data) {
 			
 		}
 
-		$('#overall').html(analytics['totalUsers']);
+		$('#overall').html(<h2>analytics['totalUsers'] total users</h2>);
 	}
 	
 	console.log(analytics);
